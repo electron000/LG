@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>LEGALMATE — Case Management &amp; Docket Registry</title>
+  
+  <link rel="icon" type="image/png" href="assets/logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#fbf9f9",
+            "on-surface": "#171717",
+            "primary": "#171717",
+            "on-primary": "#ffffff",
+            "secondary": "#5f6161",
+            "on-tertiary-container": "#ef4444"
+          },
+          fontFamily: {
+            sans: ["Inter", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/legalmate.css"/>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+
+  <!-- Desktop Sidebar -->
+  <aside class="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white border-r border-[#E5E5E5] z-40 select-none">
+    <div class="h-20 px-6 flex items-center justify-between border-b border-[#E5E5E5]">
+      <a href="dashboard.html" class="flex items-center gap-3.5 group">
+        <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-10 w-10 object-contain p-1 rounded-xl bg-white border border-[#E5E5E5] shadow-sm group-hover:scale-105 transition-transform" />
+        <div class="flex flex-col">
+          <span class="font-extrabold text-[17px] tracking-wide text-on-surface uppercase leading-tight font-sans">
+            LEGAL<span class="text-neutral-500 font-semibold">MATE</span>
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-500 font-medium">Statutory AI Suite</span>
+        </div>
+      </a>
+      <span class="flex h-2.5 w-2.5 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+    </div>
+
+    <div class="flex-1 overflow-y-auto py-5 px-3 space-y-6">
+      <div>
+        <div class="px-3 pb-2 text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          Core Workflows
+        </div>
+        <nav class="space-y-1">
+          <a href="dashboard.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            <span class="flex-1">Dashboard</span>
+          </a>
+
+          <a href="ai-assistant.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+            <span class="flex-1">AI Assistant</span>
+            <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          </a>
+
+          <a href="document-generator.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">note_add</span>
+            <span class="flex-1">Doc Generator</span>
+            <span class="text-[10px] font-mono text-neutral-400">CRA-v4</span>
+          </a>
+
+          <a href="document-analyzer.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+            <span class="flex-1">Doc Analyzer</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-red-50 text-red-600 font-semibold">2 Flags</span>
+          </a>
+
+          <a href="case-management.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold bg-[#171717] text-white transition-colors">
+            <span class="material-symbols-outlined text-[20px]">folder_open</span>
+            <span class="flex-1">Case Docket</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-white/20 text-white font-semibold">34</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="bg-neutral-50 p-3 rounded-xl border border-[#E5E5E5]">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-[11px] font-mono uppercase text-neutral-500 font-semibold">Omni-Search</span>
+          <kbd class="text-[10px] font-mono bg-white border border-[#E5E5E5] px-1.5 py-0.5 rounded text-neutral-600">Ctrl+K</kbd>
+        </div>
+        <button onclick="LegalMate.openOmnibox()" class="w-full text-left text-[12px] text-neutral-400 bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg hover:border-black transition-colors flex items-center justify-between">
+          <span>Search matter, clause...</span>
+          <span class="material-symbols-outlined text-[16px]">search</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Counsel Profile -->
+    <div class="p-3 border-t border-[#E5E5E5] bg-neutral-50">
+      <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E5E5E5] shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/avatar.png" alt="Sarah Vance - Senior Partner" class="w-9 h-9 rounded-full object-cover border border-[#E5E5E5] shrink-0" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[13px] font-semibold text-neutral-900 truncate">Sarah Vance, Esq.</span>
+            <span class="text-[11px] font-mono text-neutral-500 truncate">Senior Partner • Lit.</span>
+          </div>
+        </div>
+        <button onclick="LegalMate.showToast('Profile Vault: Certificate active', 'verified_user')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Container -->
+  <div class="flex-1 flex flex-col min-w-0 min-h-screen">
+    <!-- Desktop Topbar -->
+    <header class="hidden lg:flex h-16 w-full items-center justify-between px-8 bg-white/80 backdrop-blur-md border-b border-[#E5E5E5] sticky top-0 z-30">
+      <div class="flex items-center gap-3">
+        <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400">LegalMate System</span>
+        <span class="text-neutral-300">/</span>
+        <span class="text-[14px] font-semibold text-neutral-900">Case Docket Registry</span>
+        <span class="px-2 py-0.5 rounded-full text-[11px] font-mono bg-neutral-100 text-neutral-600 border border-[#E5E5E5]">
+          PACER CourtSync: 34 Active Cases Synchronized
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="LegalMate.triggerPacerSync()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium text-neutral-700 bg-neutral-100 hover:bg-neutral-200 border border-[#E5E5E5] transition-colors">
+          <span class="material-symbols-outlined text-[16px]">sync</span>
+          <span>Sync PACER</span>
+        </button>
+        <button onclick="openNewCase()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">add</span>
+          <span>New Case</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Topbar -->
+    <header class="lg:hidden sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-[#E5E5E5]">
+      <div class="h-16 px-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-8 w-8 object-contain p-0.5 rounded-lg border border-[#E5E5E5]" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">LegalMate</span>
+            <span class="text-[16px] font-bold text-neutral-900 truncate">Case Docket</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button onclick="LegalMate.openOmnibox()" aria-label="Search" class="p-2 text-neutral-600 hover:text-black rounded-lg">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </button>
+          <img src="assets/avatar.png" alt="Sarah Vance Profile" class="w-8 h-8 rounded-full object-cover border border-[#E5E5E5] ml-1" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Workspace -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-6 pb-24 lg:pb-12">
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+        <div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Docket Registry</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">Active Litigation Portfolio</h1>
+        </div>
+        <button onclick="openNewCase()" class="flex items-center gap-2 bg-[#171717] text-white text-[13px] font-medium px-4 py-2.5 rounded-xl hover:bg-neutral-800 transition-transform active:scale-95 shadow-sm shrink-0">
+          <span class="material-symbols-outlined text-[18px]">add</span>
+          <span>New Case Docket</span>
+        </button>
+      </div>
+
+      <!-- 3 Metrics -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex flex-col justify-between">
+          <div class="flex items-center justify-between text-neutral-500 mb-1">
+            <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Total Active Dockets</span>
+            <span class="material-symbols-outlined text-[18px]">gavel</span>
+          </div>
+          <div class="flex items-baseline gap-1 my-1">
+            <span class="text-3xl font-extrabold text-neutral-900" id="total-count">34</span>
+          </div>
+          <div class="flex items-center text-[11px] font-mono text-emerald-600 font-semibold">
+            <span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+            <span>+2 new this week</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex flex-col justify-between">
+          <div class="flex items-center justify-between text-neutral-500 mb-1">
+            <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Hearings Scheduled</span>
+            <span class="material-symbols-outlined text-[18px] text-[#ef4444]">event_upcoming</span>
+          </div>
+          <div class="flex items-baseline gap-1 my-1">
+            <span class="text-3xl font-extrabold text-neutral-900">4</span>
+          </div>
+          <div class="text-[11px] font-mono text-[#ef4444] font-semibold truncate">
+            Tomorrow 10:30 AM • High Court Div III
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex flex-col justify-between">
+          <div class="flex items-center justify-between text-neutral-500 mb-1">
+            <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Enterprise Clients</span>
+            <span class="material-symbols-outlined text-[18px] text-neutral-700">verified</span>
+          </div>
+          <div class="flex items-baseline gap-1 my-1">
+            <span class="text-3xl font-extrabold text-neutral-900">18</span>
+          </div>
+          <div class="text-[11px] font-mono text-neutral-500">
+            98% Case Health Index
+          </div>
+        </div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="space-y-3">
+        <div class="relative w-full">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400 text-[20px] pointer-events-none">search</span>
+          <input id="searchInput" oninput="filterCases()" type="text" placeholder="Search by Case No, client, or court bench..." class="w-full bg-white border border-[#E5E5E5] text-neutral-900 text-[14px] pl-10 pr-10 py-2.5 rounded-xl shadow-2xs outline-none focus:border-black transition-colors" />
+          <button id="clearBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black">
+            <span class="material-symbols-outlined text-[16px]">cancel</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2 overflow-x-auto pb-1">
+          <button onclick="setFilter('all', this)" class="filter-chip active px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-[#171717] text-white transition-colors shrink-0">
+            All Cases (34)
+          </button>
+          <button onclick="setFilter('civil', this)" class="filter-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0">
+            Civil (18)
+          </button>
+          <button onclick="setFilter('criminal', this)" class="filter-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0">
+            Criminal (6)
+          </button>
+          <button onclick="setFilter('corporate', this)" class="filter-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0">
+            Corporate / IP (10)
+          </button>
+        </div>
+      </div>
+
+      <!-- Docket Cards List -->
+      <div class="space-y-3.5" id="docketList">
+        <!-- Case 1 -->
+        <div class="case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3" data-category="criminal" onclick="showCase('State of California v. Thorne Dynamics', '#CR-2024-8841', 'High Court Div III', 'Mar 18, 2025 • 10:30 AM', 'Cross-Examination')">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+                <span class="text-neutral-900 font-semibold">#CR-2024-8841</span>
+                <span>•</span>
+                <span>High Court Div III</span>
+                <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700">Criminal</span>
+              </div>
+              <h3 class="text-lg font-bold text-neutral-900 leading-snug">State of California v. Thorne Dynamics</h3>
+            </div>
+            <button class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+              <span class="material-symbols-outlined text-[20px]">more_vert</span>
+            </button>
+          </div>
+          <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+            <div class="flex items-center gap-1.5 font-mono text-[#ef4444] font-medium bg-red-50 border border-red-200 px-2.5 py-1 rounded-full">
+              <span class="material-symbols-outlined text-[14px]">schedule</span>
+              <span>Hearing: Mar 18, 2025 • 10:30 AM</span>
+            </div>
+            <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-neutral-700"></span>
+              <span>Stage: Cross-Examination</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3" data-category="civil" onclick="showCase('Meridian Holdings v. Zenith Capital', '#CV-2024-1029', 'Commercial Bench', 'Mar 22, 2025 • 02:00 PM', 'Interlocutory Arguments')">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+                <span class="text-neutral-900 font-semibold">#CV-2024-1029</span>
+                <span>•</span>
+                <span>Commercial Bench</span>
+                <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700">Civil</span>
+              </div>
+              <h3 class="text-lg font-bold text-neutral-900 leading-snug">Meridian Holdings v. Zenith Capital</h3>
+            </div>
+            <button class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+              <span class="material-symbols-outlined text-[20px]">more_vert</span>
+            </button>
+          </div>
+          <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+            <div class="flex items-center gap-1.5 font-mono text-neutral-800 bg-neutral-100 px-2.5 py-1 rounded-full">
+              <span class="material-symbols-outlined text-[14px] text-neutral-500">schedule</span>
+              <span>Hearing: Mar 22, 2025 • 02:00 PM</span>
+            </div>
+            <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-neutral-700"></span>
+              <span>Stage: Interlocutory Arguments</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3" data-category="corporate" onclick="showCase('Apex Biosystems Patent Infringement', '#IP-2025-0042', 'Federal Circuit', 'Apr 04, 2025 • 11:00 AM', 'Pleadings Complete')">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+                <span class="text-neutral-900 font-semibold">#IP-2025-0042</span>
+                <span>•</span>
+                <span>Federal Circuit</span>
+                <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700">Corporate</span>
+              </div>
+              <h3 class="text-lg font-bold text-neutral-900 leading-snug">Apex Biosystems Patent Infringement</h3>
+            </div>
+            <button class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+              <span class="material-symbols-outlined text-[20px]">more_vert</span>
+            </button>
+          </div>
+          <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+            <div class="flex items-center gap-1.5 font-mono text-neutral-800 bg-neutral-100 px-2.5 py-1 rounded-full">
+              <span class="material-symbols-outlined text-[14px] text-neutral-500">schedule</span>
+              <span>Hearing: Apr 04, 2025 • 11:00 AM</span>
+            </div>
+            <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              <span>Stage: Pleadings Complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PACER Banner -->
+      <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-900">
+            <span class="material-symbols-outlined text-[20px]">sync_alt</span>
+          </div>
+          <div>
+            <p class="text-[13px] font-bold text-neutral-900">Real-Time PACER / CourtSync</p>
+            <p class="text-[11px] font-mono text-neutral-500">All federal &amp; state calendars synchronized 4m ago</p>
+          </div>
+        </div>
+        <button onclick="LegalMate.triggerPacerSync()" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+          Sync Now
+        </button>
+      </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-[#E5E5E5] pb-safe shadow-lg">
+      <div class="h-16 px-3 flex items-center justify-around gap-1">
+        <a href="dashboard.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">grid_view</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="ai-assistant.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Assistant</span>
+        </a>
+        <a href="document-generator.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">note_add</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">DocGen</span>
+        </a>
+        <a href="document-analyzer.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Analyzer</span>
+        </a>
+        <a href="case-management.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full bg-[#171717] text-white">
+          <span class="material-symbols-outlined text-[20px]">folder_open</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Cases</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Detail Modal -->
+  <div id="case-modal" class="hidden fixed inset-0 z-[1100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-[#E5E5E5] overflow-hidden" onclick="event.stopPropagation()">
+      <div class="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+        <div>
+          <span id="case-no" class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">#CR-2024-8841</span>
+          <h3 id="case-title" class="text-xl font-bold text-neutral-900 mt-0.5">State of California v. Thorne Dynamics</h3>
+        </div>
+        <button onclick="document.getElementById('case-modal').classList.add('hidden')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-[12px] bg-neutral-50 p-4 rounded-xl border border-[#E5E5E5]">
+          <div>
+            <span class="text-[10px] font-mono uppercase text-neutral-400 block">Court Bench</span>
+            <span id="case-bench" class="font-semibold text-neutral-900">High Court Div III</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-mono uppercase text-neutral-400 block">Next Hearing</span>
+            <span id="case-hearing" class="font-semibold text-[#ef4444]">Mar 18, 2025</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-mono uppercase text-neutral-400 block">Stage</span>
+            <span id="case-stage" class="font-semibold text-neutral-900">Cross-Examination</span>
+          </div>
+        </div>
+        <p class="text-[13px] text-neutral-700 leading-relaxed">
+          Active litigation docket registered with PACER sync. Filings, affidavits, and interlocutory arguments updated in real-time.
+        </p>
+      </div>
+      <div class="p-4 border-t border-[#E5E5E5] bg-neutral-50 flex items-center justify-end gap-2">
+        <button onclick="LegalMate.showToast('Docket dossier downloaded', 'download')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+          Download Docket
+        </button>
+        <button onclick="document.getElementById('case-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Case Modal -->
+  <div id="new-modal" class="hidden fixed inset-0 z-[1100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl border border-[#E5E5E5] overflow-hidden" onclick="event.stopPropagation()">
+      <div class="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+        <div>
+          <span class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">Docket Onboarding</span>
+          <h3 class="text-xl font-bold text-neutral-900 mt-0.5">Register New Case Matter</h3>
+        </div>
+        <button onclick="document.getElementById('new-modal').classList.add('hidden')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <form onsubmit="handleNewCase(event)" class="p-6 space-y-4">
+        <div class="space-y-1">
+          <label class="block text-[11px] font-mono uppercase text-neutral-500" for="case-title-input">Case Title / Matter Name</label>
+          <input id="case-title-input" required type="text" placeholder="e.g. Apex Global v. Horizon Ventures" class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none focus:bg-white focus:border-black transition-colors" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="space-y-1">
+            <label class="block text-[11px] font-mono uppercase text-neutral-500" for="case-category-input">Category</label>
+            <select id="case-category-input" class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none">
+              <option value="civil">Civil Litigation</option>
+              <option value="criminal">Criminal Defense</option>
+              <option value="corporate">Corporate / IP</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="block text-[11px] font-mono uppercase text-neutral-500" for="case-court-input">Court / Bench</label>
+            <input id="case-court-input" required type="text" placeholder="e.g. Federal Circuit Div II" class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none focus:bg-white focus:border-black transition-colors" />
+          </div>
+        </div>
+        <div class="pt-3 border-t border-[#E5E5E5] flex items-center justify-end gap-2">
+          <button type="button" onclick="document.getElementById('new-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+            Cancel
+          </button>
+          <button type="submit" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors">
+            Initialize Docket
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/legalmate.js"></script>
+  <script>
+    function showCase(title, no, bench, hearing, stage) {
+      document.getElementById('case-title').textContent = title;
+      document.getElementById('case-no').textContent = no;
+      document.getElementById('case-bench').textContent = bench;
+      document.getElementById('case-hearing').textContent = hearing;
+      document.getElementById('case-stage').textContent = stage;
+      document.getElementById('case-modal').classList.remove('hidden');
+    }
+
+    function openNewCase() {
+      document.getElementById('new-modal').classList.remove('hidden');
+    }
+
+    function handleNewCase(e) {
+      e.preventDefault();
+      const title = document.getElementById('case-title-input').value.trim();
+      const cat = document.getElementById('case-category-input').value;
+      const court = document.getElementById('case-court-input').value.trim();
+
+      const list = document.getElementById('docketList');
+      const randomNo = `#${cat === 'criminal' ? 'CR' : (cat === 'civil' ? 'CV' : 'IP')}-2025-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      const newCard = document.createElement('div');
+      newCard.className = 'case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3';
+      newCard.setAttribute('data-category', cat);
+      newCard.onclick = () => showCase(title, randomNo, court, 'Scheduled via PACER', 'Initial Pleadings');
+      newCard.innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+              <span class="text-neutral-900 font-semibold">${randomNo}</span>
+              <span>•</span>
+              <span>${court}</span>
+              <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700 capitalize">${cat}</span>
+            </div>
+            <h3 class="text-lg font-bold text-neutral-900 leading-snug">${title}</h3>
+          </div>
+          <button class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+          </button>
+        </div>
+        <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+          <div class="flex items-center gap-1.5 font-mono text-neutral-800 bg-neutral-100 px-2.5 py-1 rounded-full">
+            <span class="material-symbols-outlined text-[14px] text-neutral-500">schedule</span>
+            <span>Hearing: To Be Listed</span>
+          </div>
+          <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            <span>Stage: Initial Filing</span>
+          </div>
+        </div>
+      `;
+
+      list.insertBefore(newCard, list.firstChild);
+      document.getElementById('new-modal').classList.add('hidden');
+      e.target.reset();
+
+      const countEl = document.getElementById('total-count');
+      if (countEl) countEl.textContent = parseInt(countEl.textContent || '34') + 1;
+      LegalMate.showToast(`Matter "${title}" Registered!`, 'verified');
+    }
+
+    let activeFilter = 'all';
+
+    function setFilter(cat, btn) {
+      activeFilter = cat;
+      document.querySelectorAll('.filter-chip').forEach(b => {
+        b.className = 'filter-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0';
+      });
+      btn.className = 'filter-chip active px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-[#171717] text-white transition-colors shrink-0';
+      filterCases();
+    }
+
+    function filterCases() {
+      const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+      const clearBtn = document.getElementById('clearBtn');
+      if (q) clearBtn.classList.remove('hidden');
+      else clearBtn.classList.add('hidden');
+
+      document.querySelectorAll('#docketList .case-card').forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const text = card.textContent.toLowerCase();
+        const matchesCat = (activeFilter === 'all') || (cat === activeFilter);
+        const matchesQuery = !q || text.includes(q);
+
+        if (matchesCat && matchesQuery) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      filterCases();
+      input.focus();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>LEGALMATE — Statutory Intelligence & Legal Precision Suite</title>
+  
+  <!-- Favicon using user logo -->
+  <link rel="icon" type="image/png" href="assets/logo.png"/>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN with Swiss Editorial Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#fbf9f9",
+            "surface-dim": "#dbdad9",
+            "surface-bright": "#fbf9f9",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f5f3f3",
+            "surface-container": "#efeded",
+            "surface-container-high": "#e9e8e7",
+            "surface-container-highest": "#e3e2e2",
+            "on-surface": "#171717",
+            "on-surface-variant": "#444748",
+            "primary": "#171717",
+            "on-primary": "#ffffff",
+            "primary-container": "#1c1b1b",
+            "secondary": "#5f6161",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#dcdddd",
+            "on-secondary-container": "#5f6161",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#ef4444",
+            "outline": "#747878",
+            "outline-variant": "#c4c7c7",
+          },
+          fontFamily: {
+            sans: ["Inter", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- LegalMate Custom CSS -->
+  <link rel="stylesheet" href="css/legalmate.css"/>
+</head>
+
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+
+  <!-- ====================================================================
+       DESKTOP & TABLET SIDEBAR (Persistent for lg screens >= 1024px)
+       ==================================================================== -->
+  <aside class="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white border-r border-[#E5E5E5] z-40 select-none">
+    <!-- Brand Header -->
+    <div class="h-20 px-6 flex items-center justify-between border-b border-[#E5E5E5]">
+      <a href="#dashboard" class="flex items-center gap-3.5 group">
+        <img src="assets/logo.png" alt="LegalMate Tech Justice Scales Logo" class="h-10 w-10 object-contain p-1 rounded-xl bg-white border border-[#E5E5E5] shadow-sm group-hover:scale-105 transition-transform" />
+        <div class="flex flex-col">
+          <span class="font-extrabold text-[17px] tracking-wide text-on-surface uppercase leading-tight font-sans">
+            LEGAL<span class="text-neutral-500 font-semibold">MATE</span>
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-500 font-medium">Statutory AI Suite</span>
+        </div>
+      </a>
+      <span class="flex h-2.5 w-2.5 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="flex-1 overflow-y-auto py-5 px-3 space-y-6">
+      <!-- Main Workflows -->
+      <div>
+        <div class="px-3 pb-2 text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          Core Workflows
+        </div>
+        <nav class="space-y-1">
+          <a href="#dashboard" data-path="dashboard" class="nav-link active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium transition-colors">
+            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            <span class="flex-1">Dashboard</span>
+            <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-white/20 text-white">v4.8</span>
+          </a>
+
+          <a href="#assistant" data-path="assistant" class="nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+            <span class="flex-1">AI Assistant</span>
+            <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          </a>
+
+          <a href="#docgen" data-path="docgen" class="nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">note_add</span>
+            <span class="flex-1">Doc Generator</span>
+            <span class="text-[10px] font-mono text-neutral-400">CRA-v4</span>
+          </a>
+
+          <a href="#docanalyzer" data-path="docanalyzer" class="nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+            <span class="flex-1">Doc Analyzer</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-red-50 text-red-600 font-semibold">2 Flags</span>
+          </a>
+
+          <a href="#cms" data-path="cms" class="nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">folder_open</span>
+            <span class="flex-1">Case Docket</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 text-neutral-700 font-semibold">34</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Statutory Jurisdictions -->
+      <div>
+        <div class="px-3 pb-2 text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          Active Jurisdictions
+        </div>
+        <div class="space-y-1 text-[13px] text-neutral-600">
+          <div class="flex items-center justify-between px-3 py-1.5 rounded-lg hover:bg-neutral-50 cursor-pointer">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-neutral-400">gavel</span>
+              <span>Delaware Chancery</span>
+            </div>
+            <span class="text-[11px] font-mono text-emerald-600">Active</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-1.5 rounded-lg hover:bg-neutral-50 cursor-pointer">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-neutral-400">account_balance</span>
+              <span>NY Commercial Div</span>
+            </div>
+            <span class="text-[11px] font-mono text-neutral-400">Synced</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-1.5 rounded-lg hover:bg-neutral-50 cursor-pointer">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-neutral-400">balance</span>
+              <span>Supreme Court (Bench)</span>
+            </div>
+            <span class="text-[11px] font-mono text-neutral-400">Synced</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Command Prompt Bar -->
+      <div class="bg-neutral-50 p-3 rounded-xl border border-[#E5E5E5]">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-[11px] font-mono uppercase text-neutral-500 font-semibold">Omni-Search</span>
+          <kbd class="text-[10px] font-mono bg-white border border-[#E5E5E5] px-1.5 py-0.5 rounded shadow-2xs text-neutral-600">Ctrl+K</kbd>
+        </div>
+        <button onclick="LegalMate.openOmnibox()" class="w-full text-left text-[12px] text-neutral-400 bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg hover:border-black transition-colors flex items-center justify-between">
+          <span>Search matter, clause...</span>
+          <span class="material-symbols-outlined text-[16px]">search</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- User / Counsel Profile Footer -->
+    <div class="p-3 border-t border-[#E5E5E5] bg-neutral-50">
+      <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E5E5E5] shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/avatar.png" alt="Sarah Vance - Senior Partner" class="w-9 h-9 rounded-full object-cover border border-[#E5E5E5] shrink-0" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[13px] font-semibold text-neutral-900 truncate">Sarah Vance, Esq.</span>
+            <span class="text-[11px] font-mono text-neutral-500 truncate">Senior Partner • Lit.</span>
+          </div>
+        </div>
+        <button onclick="LegalMate.showToast('Counsel Preferences & Certificate Vault', 'shield_person')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg hover:bg-neutral-100 transition-colors" title="Settings">
+          <span class="material-symbols-outlined text-[18px]">settings</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       MAIN APPLICATION CONTAINER (Responsive for Desktop, Tablet, Mobile)
+       ==================================================================== -->
+  <div class="flex-1 flex flex-col min-w-0 min-h-screen">
+    
+    <!-- DESKTOP TOP BAR (lg only) -->
+    <header class="hidden lg:flex h-16 w-full items-center justify-between px-8 bg-white/80 backdrop-blur-md border-b border-[#E5E5E5] sticky top-0 z-30">
+      <!-- Breadcrumb & Context -->
+      <div class="flex items-center gap-3">
+        <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400">LegalMate System</span>
+        <span class="text-neutral-300">/</span>
+        <span id="current-page-title" class="text-[14px] font-semibold text-neutral-900">Dashboard</span>
+        <span class="px-2 py-0.5 rounded-full text-[11px] font-mono bg-neutral-100 text-neutral-600 border border-[#E5E5E5]">
+          Session: Matter #CV-2024-1029
+        </span>
+      </div>
+
+      <!-- Right Actions Bar -->
+      <div class="flex items-center gap-3">
+        <!-- PACER Sync Button -->
+        <button id="pacer-sync-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium text-neutral-700 bg-neutral-100 hover:bg-neutral-200 border border-[#E5E5E5] transition-colors">
+          <span id="pacer-sync-icon" class="material-symbols-outlined text-[16px]">sync</span>
+          <span>CourtSync PACER</span>
+        </button>
+
+        <!-- New Draft Quick Button -->
+        <button onclick="LegalMate.navigateTo('docgen')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">add</span>
+          <span>New Draft</span>
+        </button>
+
+        <!-- Notifications Dropdown Trigger -->
+        <div class="relative">
+          <button class="btn-notifications relative p-2 rounded-full text-neutral-600 hover:text-black hover:bg-neutral-100 transition-colors">
+            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          </button>
+          
+          <!-- Dropdown Menu -->
+          <div id="notifications-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white border border-[#E5E5E5] rounded-2xl shadow-xl z-50 overflow-hidden">
+            <div class="px-4 py-3 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+              <span class="text-[13px] font-semibold">Docket Alerts</span>
+              <span class="text-[11px] font-mono text-[#ef4444] font-medium">3 Unread</span>
+            </div>
+            <div class="divide-y divide-neutral-100 max-h-72 overflow-y-auto">
+              <div class="p-3 hover:bg-neutral-50 cursor-pointer transition-colors" onclick="LegalMate.navigateTo('cms'); LegalMate.toggleNotificationsMenu();">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] font-mono text-neutral-400">#CR-2024-8841</span>
+                  <span class="text-[10px] font-mono text-neutral-400">14m ago</span>
+                </div>
+                <p class="text-[12px] font-medium text-neutral-900 leading-snug">Cross-Examination calendar confirmed for tomorrow 10:30 AM.</p>
+              </div>
+              <div class="p-3 hover:bg-neutral-50 cursor-pointer transition-colors" onclick="LegalMate.navigateTo('docanalyzer'); LegalMate.toggleNotificationsMenu();">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] font-mono text-red-600 font-semibold">Risk Alert</span>
+                  <span class="text-[10px] font-mono text-neutral-400">1h ago</span>
+                </div>
+                <p class="text-[12px] font-medium text-neutral-900 leading-snug">Uncapped indemnity clause identified in Supply Agreement v4.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE & TABLET TOP HEADER (< 1024px) -->
+    <header class="lg:hidden sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-[#E5E5E5] shadow-xs">
+      <div class="h-16 px-4 flex items-center justify-between">
+        <!-- Logo & Title -->
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-8 w-8 object-contain p-0.5 rounded-lg border border-[#E5E5E5]" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">LegalMate</span>
+            <span class="text-[16px] font-bold text-neutral-900 truncate">AI Suite</span>
+          </div>
+        </div>
+
+        <!-- Quick Top Nav for Tablet/Mobile -->
+        <div class="flex items-center gap-1">
+          <button onclick="LegalMate.openOmnibox()" aria-label="Search" class="p-2 text-neutral-600 hover:text-black rounded-lg">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </button>
+          <button class="btn-notifications relative p-2 text-neutral-600 hover:text-black rounded-lg" aria-label="Notifications">
+            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          </button>
+          <div class="p-1">
+            <img src="assets/avatar.png" alt="Sarah Vance Profile" class="w-7 h-7 rounded-full object-cover border border-[#E5E5E5]" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         DYNAMIC APP VIEWS (Switched via hash routing)
+         ==================================================================== -->
+    <main class="flex-1 w-full bg-surface pb-24 lg:pb-12">
+
+      <!-- ================================================================
+           VIEW 1: DASHBOARD
+           ================================================================ -->
+      <section id="view-dashboard" class="app-view w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-8">
+        <!-- Editorial Swiss Header Banner -->
+        <div class="flex flex-col space-y-3 pt-2">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[#ef4444] animate-pulse"></span>
+            <span class="font-mono text-[11px] uppercase tracking-widest text-neutral-500 font-semibold">Statutory Intelligence Suite</span>
+          </div>
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+                Intelligent Legal Precision
+              </h1>
+              <p class="text-sm sm:text-base text-neutral-600 max-w-2xl mt-1.5 font-normal leading-relaxed">
+                Autonomous research, drafting, and contract intelligence built for elite legal counsel. Cross-validating statutes, case precedent, and real-time dockets.
+              </p>
+            </div>
+            <!-- Quick Actions -->
+            <div class="flex items-center gap-2.5 shrink-0">
+              <button onclick="LegalMate.navigateTo('assistant')" class="h-11 px-5 rounded-full bg-[#171717] text-white text-[13px] font-medium flex items-center gap-2 hover:bg-neutral-800 transition-transform active:scale-95 shadow-sm">
+                <span>Launch Assistant</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </button>
+              <button onclick="document.getElementById('modules-section').scrollIntoView({ behavior: 'smooth' })" class="h-11 px-5 rounded-full bg-white border border-[#E5E5E5] text-neutral-800 text-[13px] font-medium hover:bg-neutral-50 transition-colors shadow-2xs">
+                <span>Explore Tools</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Docket Pulse Ticker Card -->
+        <div class="w-full rounded-2xl bg-white border border-[#E5E5E5] p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 shrink-0">
+              <span class="material-symbols-outlined text-[20px]">gavel</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono text-[#ef4444] uppercase tracking-wider font-semibold">Docket Pulse Live</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              </div>
+              <span class="text-[14px] text-neutral-900 font-semibold truncate">SEC vs. SolarTech Filing Added • Delaware Court of Chancery</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 self-end sm:self-auto">
+            <span class="text-[12px] font-mono text-neutral-500">14:02 EST</span>
+            <button onclick="LegalMate.navigateTo('cms')" class="text-[12px] font-medium text-neutral-900 hover:underline flex items-center gap-0.5">
+              <span>View Docket</span>
+              <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Precision Workflow Tool Modules -->
+        <div id="modules-section" class="space-y-4">
+          <div class="flex items-baseline justify-between border-b border-[#E5E5E5] pb-2">
+            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900">Precision Workflows</h2>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500">4 Intelligent Modules</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- 1. AI Legal Assistant -->
+            <div onclick="LegalMate.navigateTo('assistant')" class="group cursor-pointer flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+              <div class="flex items-center justify-between w-full">
+                <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+                </div>
+                <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+              </div>
+              <div class="mt-4">
+                <div class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">Statutory Synthesis</div>
+                <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">AI Counsel</h3>
+                <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                  Statutory query, non-compete doctrine &amp; benchmark Supreme Court precedent research.
+                </p>
+              </div>
+            </div>
+
+            <!-- 2. Document Builder -->
+            <div onclick="LegalMate.navigateTo('docgen')" class="group cursor-pointer flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+              <div class="flex items-center justify-between w-full">
+                <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">note_add</span>
+                </div>
+                <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+              </div>
+              <div class="mt-4">
+                <div class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">Live Parchment Engine</div>
+                <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">Doc Builder</h3>
+                <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                  Automated commercial rental agreements &amp; standard covenants with real-time parchment preview.
+                </p>
+              </div>
+            </div>
+
+            <!-- 3. Risk Review / Doc Analyzer -->
+            <div onclick="LegalMate.navigateTo('docanalyzer')" class="group cursor-pointer flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+              <div class="flex items-center justify-between w-full">
+                <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">document_scanner</span>
+                </div>
+                <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+              </div>
+              <div class="mt-4">
+                <div class="text-[11px] font-mono uppercase text-red-500 font-semibold">Risk &amp; Redline OCR</div>
+                <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">Risk Review</h3>
+                <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                  Instant risk extraction, liability caps, uncapped consequential damage alerts &amp; redlines.
+                </p>
+              </div>
+            </div>
+
+            <!-- 4. Case Docket / CMS -->
+            <div onclick="LegalMate.navigateTo('cms')" class="group cursor-pointer flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+              <div class="flex items-center justify-between w-full">
+                <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">folder_open</span>
+                </div>
+                <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+              </div>
+              <div class="mt-4">
+                <div class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">PACER Sync Registry</div>
+                <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">Case Docket</h3>
+                <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                  Hearing calendars, docket entries, California &amp; Federal circuit litigation management.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editorial Spotlight Graphic Card (LLM v4.8 Benchmark) -->
+        <div class="rounded-2xl overflow-hidden bg-[#171717] text-white relative shadow-lg p-6 sm:p-8">
+          <div class="relative z-10 max-w-2xl space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-neutral-400 font-semibold">Autonomous Audit</span>
+              <span class="text-neutral-500">•</span>
+              <span class="text-[11px] font-mono text-neutral-400">v4.8 Legal-Tuned LLM</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              98.4% Clause Detection Speed Across 24 Jurisdictions
+            </h3>
+            <p class="text-sm text-neutral-300 font-normal leading-relaxed">
+              Real-time cross-validation against statutory codes, landmark Supreme Court dicta, and standard commercial covenants with zero latency.
+            </p>
+            <div class="pt-2 flex flex-wrap items-center gap-4">
+              <button onclick="LegalMate.showToast('Statutory benchmarks verified across 50 federal and state jurisdictions.', 'verified')" class="text-[13px] font-medium text-white underline underline-offset-4 hover:text-neutral-300 flex items-center gap-1.5">
+                <span>Review Statutory Benchmarks</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <span class="text-[12px] font-mono text-neutral-400">Sha-256 Engine Verified</span>
+            </div>
+          </div>
+          <!-- Decorative SVG Wave -->
+          <div class="absolute right-0 bottom-0 opacity-15 pointer-events-none">
+            <svg width="340" height="200" viewBox="0 0 340 200" fill="none">
+              <path d="M0 160C80 80 140 220 220 140C300 60 320 120 360 80V200H0V160Z" fill="white"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Split Grid: Recent Drafting & Immediate Prompt Shortcuts -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Recent Drafting Table/List (2 Cols on lg) -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+              <div class="flex items-center gap-2">
+                <h2 class="text-lg font-bold text-neutral-900">Recent Drafting</h2>
+                <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+                <span class="text-[11px] font-mono text-neutral-500">3 Today</span>
+              </div>
+              <button onclick="LegalMate.navigateTo('docgen')" class="text-[12px] font-medium text-neutral-600 hover:text-black">
+                View All
+              </button>
+            </div>
+
+            <div class="space-y-3">
+              <!-- Item 1: Master Service Agreement -->
+              <div class="p-4 rounded-xl bg-white border border-[#E5E5E5] hover:border-black transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="space-y-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="text-[15px] font-bold text-neutral-900 truncate">Master Service Agreement v2.1</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-neutral-100 text-neutral-800 font-medium">Finalized</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-[12px] text-neutral-500">
+                    <span>Acme Corp</span>
+                    <span>•</span>
+                    <span class="font-mono">2h ago</span>
+                    <span>•</span>
+                    <span class="font-mono text-emerald-600">SHA-256 Verified</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button onclick="LegalMate.showToast('Inspecting Master Service Agreement v2.1...', 'search')" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+                    Inspect
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item 2: Commercial Lease Agreement -->
+              <div class="p-4 rounded-xl bg-white border border-[#E5E5E5] hover:border-black transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="space-y-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="text-[15px] font-bold text-neutral-900 truncate">Commercial Lease Agreement</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-amber-50 text-amber-700 font-medium border border-amber-200">Under Review</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-[12px] text-neutral-500">
+                    <span>Apex Realty Group</span>
+                    <span>•</span>
+                    <span class="font-mono">5h ago</span>
+                    <span>•</span>
+                    <span class="font-mono text-red-600 font-medium">3 Flags Identified</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button onclick="LegalMate.navigateTo('docanalyzer')" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-red-50 text-red-700 hover:bg-red-100 transition-colors">
+                    Review Flags
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item 3: Non-Disclosure Agreement -->
+              <div class="p-4 rounded-xl bg-white border border-[#E5E5E5] hover:border-black transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="space-y-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="text-[15px] font-bold text-neutral-900 truncate">Mutual Non-Disclosure Agreement</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-neutral-100 text-neutral-600 font-medium">Draft</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-[12px] text-neutral-500">
+                    <span>Hyperion Labs</span>
+                    <span>•</span>
+                    <span class="font-mono">Yesterday</span>
+                    <span>•</span>
+                    <span class="font-mono">Author: S. Vance</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button onclick="LegalMate.navigateTo('docgen')" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+                    Open Editor
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Immediate Prompt Shortcuts (1 Col on lg) -->
+          <div class="space-y-4">
+            <div class="border-b border-[#E5E5E5] pb-2">
+              <h2 class="text-lg font-bold text-neutral-900">Direct Directives</h2>
+              <span class="text-[11px] font-mono uppercase text-neutral-500">Instant AI Inquiries</span>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-[#E5E5E5] space-y-3">
+              <p class="text-[12px] text-neutral-600 leading-snug">
+                Click any shortcut to dispatch prompt directly into AI Assistant:
+              </p>
+              <div class="flex flex-col gap-2">
+                <button onclick="LegalMate.navigateTo('assistant'); setTimeout(() => { if (window.fillAssistantPrompt) window.fillAssistantPrompt('Summarize Indemnification Scope under Delaware General Corporation Law'); }, 150);" class="text-left p-3 rounded-xl bg-neutral-50 hover:bg-neutral-100 border border-[#E5E5E5] text-[13px] font-medium text-neutral-900 transition-colors flex items-center justify-between group">
+                  <span>"Summarize Indemnification Scope"</span>
+                  <span class="material-symbols-outlined text-[16px] text-neutral-400 group-hover:text-black">arrow_forward</span>
+                </button>
+                <button onclick="LegalMate.navigateTo('assistant'); setTimeout(() => { if (window.fillAssistantPrompt) window.fillAssistantPrompt('Evaluate enforceability of non-compete clause post 2024 amendments and cited case precedents.'); }, 150);" class="text-left p-3 rounded-xl bg-neutral-50 hover:bg-neutral-100 border border-[#E5E5E5] text-[13px] font-medium text-neutral-900 transition-colors flex items-center justify-between group">
+                  <span>"Check Non-Compete Section 27"</span>
+                  <span class="material-symbols-outlined text-[16px] text-neutral-400 group-hover:text-black">arrow_forward</span>
+                </button>
+                <button onclick="LegalMate.navigateTo('assistant'); setTimeout(() => { if (window.fillAssistantPrompt) window.fillAssistantPrompt('Audit Governing Law & Exclusive Jurisdiction clause in cross-border tech service contracts'); }, 150);" class="text-left p-3 rounded-xl bg-neutral-50 hover:bg-neutral-100 border border-[#E5E5E5] text-[13px] font-medium text-neutral-900 transition-colors flex items-center justify-between group">
+                  <span>"Audit Governing Law Clause"</span>
+                  <span class="material-symbols-outlined text-[16px] text-neutral-400 group-hover:text-black">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 2: AI COUNSEL ASSISTANT
+           ================================================================ -->
+      <section id="view-assistant" class="app-view hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-6">
+        <!-- Top Matter Session Context Pill -->
+        <div class="bg-white border border-[#E5E5E5] text-neutral-900 rounded-2xl px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ef4444] animate-pulse shrink-0"></span>
+            <span class="text-[13px] font-mono text-neutral-600 truncate">
+              Active Matter: <strong class="text-black font-semibold">In re TechVentures Dispute</strong> • Supreme Court / High Court Bench
+            </span>
+          </div>
+          <div class="flex items-center gap-2 self-end sm:self-auto">
+            <button onclick="LegalMate.showToast('Jurisdiction locked to Supreme Court Bench & Section 27 ICA', 'balance')" class="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition-colors">
+              Filter: Indian Contract Act 1872
+            </button>
+            <button onclick="LegalMate.showToast('Matter context switcher opened', 'tune')" aria-label="Change Context" class="p-1 text-neutral-500 hover:text-black rounded-lg">
+              <span class="material-symbols-outlined text-[18px]">tune</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Desktop Dual-Pane Layout: 7 cols Chat Thread, 5 cols Precedents Dossier -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left/Main Chat Column (7 cols) -->
+          <div class="lg:col-span-7 space-y-4">
+            
+            <!-- User Prompt Query Bubble -->
+            <div class="flex flex-col items-end gap-1.5 pl-6 sm:pl-12">
+              <div class="bg-[#171717] text-white rounded-2xl rounded-tr-xs px-5 py-3.5 shadow-sm max-w-xl">
+                <p class="text-[14px] leading-relaxed">
+                  Evaluate enforceability of non-compete clause post 2024 amendments and cited case precedents.
+                </p>
+              </div>
+              <div class="flex items-center gap-2 pr-1 text-[11px] font-mono text-neutral-500">
+                <span>09:42 AM • Sarah Vance, Senior Partner</span>
+                <span class="material-symbols-outlined text-[14px] text-neutral-400">done_all</span>
+              </div>
+            </div>
+
+            <!-- Structured AI Response Block -->
+            <div class="space-y-4">
+              <!-- Collapsible Reasoning Strategy Pill -->
+              <div class="bg-neutral-100 border border-[#E5E5E5] rounded-2xl p-3.5 shadow-xs">
+                <button class="w-full flex items-center justify-between text-left group" id="assistant-toggle-reasoning" onclick="toggleAssistantReasoning()">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-neutral-800">psychology</span>
+                    <span class="text-[12px] font-mono text-neutral-800 font-semibold">
+                      ✦ Analyzed 14 precedents • Verified constitutional validity • 1.2s
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-[18px] text-neutral-500 transition-transform duration-200" id="assistant-reasoning-icon">expand_more</span>
+                </button>
+                <div class="hidden mt-3 pt-3 border-t border-[#E5E5E5] flex flex-col gap-2 text-neutral-600 text-[12px] font-mono" id="assistant-reasoning-body">
+                  <p>• Cross-referenced Section 27, Indian Contract Act 1872 with restraint of trade doctrines.</p>
+                  <p>• Filtered judicial dicta from Supreme Court of India benchmark benches.</p>
+                  <p>• Assessed post-termination restrictions vs in-term covenants balance.</p>
+                  <p>• Tested against Article 19(1)(g) constitutional freedom of profession.</p>
+                </div>
+              </div>
+
+              <!-- AI Main Legal Answer Card -->
+              <div class="bg-white border border-[#E5E5E5] rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <!-- Badges -->
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="bg-neutral-100 text-neutral-800 font-mono text-[11px] px-2.5 py-0.5 rounded-full font-medium">ICA §27</span>
+                  <span class="bg-neutral-100 text-neutral-800 font-mono text-[11px] px-2.5 py-0.5 rounded-full font-medium">Article 19(1)(g)</span>
+                  <span class="bg-neutral-100 text-neutral-800 font-mono text-[11px] px-2.5 py-0.5 rounded-full font-medium">BNS §378 Ref</span>
+                  <span class="ml-auto bg-red-100 text-red-700 font-mono text-[11px] px-2.5 py-0.5 rounded-full font-bold">Void Ab Initio (Post-Term)</span>
+                </div>
+
+                <!-- Synthesized Statutory Content -->
+                <div class="space-y-4 text-neutral-800">
+                  <div>
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">Statutory Interpretation</span>
+                    <h3 class="text-[17px] font-bold text-neutral-900 mt-1">1. Categorical Restraint Proscription</h3>
+                    <p class="text-[14px] text-neutral-600 mt-1.5 leading-relaxed">
+                      Under <strong>Section 27 of the Indian Contract Act</strong>, any agreement restraining exercise of lawful trade, business, or profession is void <em>pro tanto</em>. Indian jurisprudence adheres strictly to statutory text, declining to import the English common law "doctrine of reasonableness" to post-termination restrictive covenants.
+                    </p>
+                  </div>
+
+                  <!-- Key Judicial Quote -->
+                  <div class="bg-neutral-50 border-l-4 border-[#171717] rounded-r-xl p-3.5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-neutral-500">
+                      <span class="material-symbols-outlined text-[16px]">gavel</span>
+                      <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Key Judicial Benchmark</span>
+                    </div>
+                    <p class="text-[13px] font-mono text-neutral-900 leading-relaxed italic">
+                      "The rule is absolute: an employer cannot protect itself against ordinary competition from a former employee through covenants taking effect post severance."
+                    </p>
+                  </div>
+
+                  <div>
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">Operational Distinctions</span>
+                    <h3 class="text-[17px] font-bold text-neutral-900 mt-1">2. In-Term vs. Post-Termination Covenants</h3>
+                    <p class="text-[14px] text-neutral-600 mt-1.5 leading-relaxed">
+                      Negative stipulations operative <strong>during</strong> employment tenure do not attract the prohibition of Section 27 unless wholly unconscionable. However, clauses extending beyond resignation or discharge—irrespective of geography, remuneration, or tenure—remain unenforceable in Indian jurisdiction.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Micro Action Bar -->
+                <div class="pt-3 border-t border-[#E5E5E5] flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <button id="btn-copy-citation" onclick="copyCitationText()" class="px-3 py-1.5 rounded-full text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center gap-1.5 transition-colors">
+                      <span class="material-symbols-outlined text-[15px]">content_copy</span>
+                      <span id="btn-copy-citation-text">Copy Citation</span>
+                    </button>
+                    <button onclick="LegalMate.showToast('Generating official court citation PDF brief...', 'picture_as_pdf')" class="px-3 py-1.5 rounded-full text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center gap-1.5 transition-colors">
+                      <span class="material-symbols-outlined text-[15px]">picture_as_pdf</span>
+                      <span>Export PDF</span>
+                    </button>
+                  </div>
+                  <button onclick="LegalMate.showToast('Regenerating statutory analysis with updated dicta...', 'cached')" aria-label="Regenerate" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+                    <span class="material-symbols-outlined text-[18px]">cached</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Suggested Inquiries Chips -->
+            <div class="space-y-2 pt-1">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">Suggested Counsel Inquiries</span>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="window.fillAssistantPrompt('Draft exception clause for trade secret misuse and proprietary formula confidentiality')" class="px-3 py-1.5 rounded-full bg-white border border-[#E5E5E5] text-neutral-800 hover:border-black text-[12px] font-medium transition-colors">
+                  Draft exception clause for trade secret misuse
+                </button>
+                <button onclick="window.fillAssistantPrompt('Garden leave clause enforceability under Indian Contract Act Section 27')" class="px-3 py-1.5 rounded-full bg-white border border-[#E5E5E5] text-neutral-800 hover:border-black text-[12px] font-medium transition-colors">
+                  Garden leave clause enforceability under ICA
+                </button>
+              </div>
+            </div>
+
+            <!-- Floating / Sticky Query Bar -->
+            <div class="pt-3 sticky bottom-4 z-20">
+              <form onsubmit="handleAssistantQuerySubmit(event)" class="bg-white border border-[#E5E5E5] shadow-xl rounded-full p-2 flex items-center gap-2">
+                <button type="button" onclick="LegalMate.showToast('Select contract or docket brief to attach...', 'attach_file')" aria-label="Attach File" class="w-9 h-9 rounded-full flex items-center justify-center text-neutral-500 hover:text-black hover:bg-neutral-100 transition-colors shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">attach_file</span>
+                </button>
+                <input id="assistant-query-input" type="text" placeholder="Inquire statute, precedent, or procedural law..." class="flex-1 bg-transparent py-1.5 px-2 text-[14px] text-neutral-900 placeholder:text-neutral-400 outline-none" />
+                <button type="submit" aria-label="Send Query" class="w-9 h-9 rounded-full bg-[#171717] text-white flex items-center justify-center hover:bg-neutral-800 active:scale-95 transition-transform shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right/Authorities Column (5 cols on lg) -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px] text-neutral-900">balance</span>
+                <h4 class="text-[14px] font-bold text-neutral-900 uppercase tracking-wider font-mono">
+                  Verified Precedents
+                </h4>
+              </div>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 text-neutral-600 font-semibold">
+                3 Authorities
+              </span>
+            </div>
+
+            <!-- Precedent Authority Cards List -->
+            <div class="space-y-3">
+              <!-- Authority 1 -->
+              <div onclick="showPrecedentDetail('Niranjan Shankar Golikari', '1967 SCR (1) 378', 'Supreme Court (3-Judge Bench)', 'Demarcated the boundary between negative covenants during active employment period vs post separation. Held that covenants during the employment period are valid unless unconscionable.')" class="cursor-pointer p-4 rounded-xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[12px] font-mono text-neutral-500">1967 SCR (1) 378</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">98% Match</span>
+                </div>
+                <h5 class="text-[15px] font-bold text-neutral-900 leading-snug">
+                  Niranjan Shankar Golikari v. Century Spg. &amp; Mfg. Co.
+                </h5>
+                <p class="text-[12px] text-neutral-600 leading-relaxed line-clamp-2">
+                  Supreme Court demarcated standard between negative covenants during active employment period versus covenants post separation.
+                </p>
+                <div class="pt-2 border-t border-neutral-100 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                  <span>Supreme Court (3-Judge Bench)</span>
+                  <span class="material-symbols-outlined text-[16px] text-neutral-400">arrow_forward</span>
+                </div>
+              </div>
+
+              <!-- Authority 2 -->
+              <div onclick="showPrecedentDetail('Percept D\'Mark (India) v. Zaheer Khan', 'AIR 2006 SC 3426', 'Supreme Court (2-Judge Bench)', 'Affirmed that post-contractual covenants restraining freedom of profession under Section 27 are strictly unconstitutional, void, and cannot be salvaged through reasonableness arguments.')" class="cursor-pointer p-4 rounded-xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[12px] font-mono text-neutral-500">AIR 2006 SC 3426</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">94% Match</span>
+                </div>
+                <h5 class="text-[15px] font-bold text-neutral-900 leading-snug">
+                  Percept D'Mark (India) v. Zaheer Khan
+                </h5>
+                <p class="text-[12px] text-neutral-600 leading-relaxed line-clamp-2">
+                  Affirmed that post-contractual covenants restraining freedom of profession under Section 27 are strictly unconstitutional and void.
+                </p>
+                <div class="pt-2 border-t border-neutral-100 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                  <span>Supreme Court (2-Judge Bench)</span>
+                  <span class="material-symbols-outlined text-[16px] text-neutral-400">arrow_forward</span>
+                </div>
+              </div>
+
+              <!-- Authority 3 -->
+              <div onclick="showPrecedentDetail('Superintendence Co. v. Krishan Murgai', 'ILR 1980 Del 1120', 'Delhi High Court', 'Concluded that even reasonable restraints post-service cannot be validated by invoking Section 27 exceptions. Absolute prohibition on post-termination non-competes.')" class="cursor-pointer p-4 rounded-xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[12px] font-mono text-neutral-500">ILR 1980 Del 1120</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-700 font-semibold border border-neutral-200">89% Match</span>
+                </div>
+                <h5 class="text-[15px] font-bold text-neutral-900 leading-snug">
+                  Superintendence Co. v. Krishan Murgai
+                </h5>
+                <p class="text-[12px] text-neutral-600 leading-relaxed line-clamp-2">
+                  Concluded that even reasonable restraints post-service cannot be validated by invoking Section 27 exceptions.
+                </p>
+                <div class="pt-2 border-t border-neutral-100 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                  <span>Delhi High Court</span>
+                  <span class="material-symbols-outlined text-[16px] text-neutral-400">arrow_forward</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 3: DOCUMENT GENERATOR (Dual-Pane Parchment Preview)
+           ================================================================ -->
+      <section id="view-docgen" class="app-view hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-6">
+        <!-- Progress Stepper Header -->
+        <div class="w-full flex items-center justify-between p-1 bg-white border border-[#E5E5E5] rounded-full shadow-2xs max-w-lg mx-auto">
+          <button id="step-btn-1" onclick="switchDocGenStep(1)" class="flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full bg-[#171717] text-white shadow-xs transition-all text-[12px] font-mono uppercase font-semibold">
+            <span class="material-symbols-outlined text-[16px]">edit_document</span>
+            <span>1. Fill &amp; Generate</span>
+          </button>
+          <button id="step-btn-2" onclick="switchDocGenStep(2)" class="flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full text-neutral-600 hover:text-black transition-all text-[12px] font-mono uppercase font-semibold">
+            <span class="material-symbols-outlined text-[16px]">verified</span>
+            <span>2. Review &amp; Sign</span>
+          </button>
+        </div>
+
+        <!-- Template Context Selector Banner -->
+        <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-700 font-mono text-[11px]">
+              <span>STANDARD CRA-v4.2</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#ef4444] animate-pulse"></span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900">Commercial Rental Agreement</h2>
+            <p class="text-[13px] text-neutral-600">Jurisdiction: Standard Commercial Leases (NY &amp; DE Statutory Alignment)</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="LegalMate.showToast('Template library: CRA-v4.2, NDA-v2, MSA-v3 available', 'view_list')" class="px-3 py-1.5 rounded-lg border border-[#E5E5E5] bg-neutral-50 hover:bg-neutral-100 text-[12px] font-medium text-neutral-800 transition-colors flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+              <span>Change Template</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Desktop Dual-Pane Layout: Left Form (5 cols), Right Parchment Preview (7 cols) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left Column: Step & Form Configuration (5 cols) -->
+          <div class="lg:col-span-5 space-y-4">
+            <!-- Form Tabs -->
+            <nav class="w-full">
+              <div class="grid grid-cols-3 gap-1 p-1 bg-white border border-[#E5E5E5] rounded-full" id="docgen-tab-bar">
+                <button class="tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full bg-[#171717] text-white font-semibold transition-all" id="tab-parties" onclick="switchDocGenSection('parties')" type="button">
+                  Parties
+                </button>
+                <button class="tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full text-neutral-600 hover:text-black transition-all" id="tab-premises" onclick="switchDocGenSection('premises')" type="button">
+                  Premises
+                </button>
+                <button class="tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full text-neutral-600 hover:text-black transition-all" id="tab-terms" onclick="switchDocGenSection('terms')" type="button">
+                  Rental Terms
+                </button>
+              </div>
+            </nav>
+
+            <!-- Form Panels -->
+            <form id="docgen-form" onsubmit="event.preventDefault();" class="space-y-4">
+              <!-- Panel 1: Parties -->
+              <div class="docgen-panel space-y-3" id="panel-parties">
+                <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+                  <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Statutory Identification</span>
+                    <span class="text-[11px] font-mono text-neutral-400">Sec. 1.01</span>
+                  </div>
+
+                  <!-- Lessor Input -->
+                  <div class="space-y-1">
+                    <label class="block text-[11px] font-mono uppercase text-neutral-500" for="input-lessor">Lessor / Landlord Legal Name</label>
+                    <div class="flex items-center gap-2 bg-neutral-50 border border-[#E5E5E5] rounded-xl px-3 py-2 focus-within:bg-white focus-within:border-black transition-colors">
+                      <span class="material-symbols-outlined text-[18px] text-neutral-400">domain</span>
+                      <input id="input-lessor" type="text" value="Vanguard Real Estate Trust" oninput="updateDocPreview()" class="w-full bg-transparent text-[13px] text-neutral-900 outline-none" />
+                    </div>
+                  </div>
+
+                  <!-- Lessee Input -->
+                  <div class="space-y-1">
+                    <label class="block text-[11px] font-mono uppercase text-neutral-500" for="input-lessee">Lessee / Tenant Entity</label>
+                    <div class="flex items-center gap-2 bg-neutral-50 border border-[#E5E5E5] rounded-xl px-3 py-2 focus-within:bg-white focus-within:border-black transition-colors">
+                      <span class="material-symbols-outlined text-[18px] text-neutral-400">corporate_fare</span>
+                      <input id="input-lessee" type="text" value="Apex Omnimedia LLP" oninput="updateDocPreview()" class="w-full bg-transparent text-[13px] text-neutral-900 outline-none" />
+                    </div>
+                  </div>
+
+                  <!-- Authority & Notice -->
+                  <div class="grid grid-cols-2 gap-2 pt-1">
+                    <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                      <span class="block text-[10px] font-mono uppercase text-neutral-500">Authorized Signatory</span>
+                      <span class="text-[12px] font-semibold text-neutral-900 truncate block mt-0.5">Managing Trustee</span>
+                    </div>
+                    <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                      <span class="block text-[10px] font-mono uppercase text-neutral-500">Notice Dispatch</span>
+                      <span class="text-[12px] font-semibold text-neutral-900 truncate block mt-0.5">Certified Post / Email</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Panel 2: Premises -->
+              <div class="docgen-panel hidden space-y-3" id="panel-premises">
+                <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+                  <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Demised Parcel Description</span>
+                    <span class="text-[11px] font-mono text-neutral-400">Sec. 1.02</span>
+                  </div>
+
+                  <!-- Premises Address -->
+                  <div class="space-y-1">
+                    <label class="block text-[11px] font-mono uppercase text-neutral-500" for="input-premises">Demised Premises Address</label>
+                    <div class="flex items-start gap-2 bg-neutral-50 border border-[#E5E5E5] rounded-xl px-3 py-2 focus-within:bg-white focus-within:border-black transition-colors">
+                      <span class="material-symbols-outlined text-[18px] text-neutral-400 mt-0.5">location_on</span>
+                      <textarea id="input-premises" rows="2" oninput="updateDocPreview()" class="w-full bg-transparent text-[13px] text-neutral-900 outline-none resize-none">Suite 400, 750 Lexington Avenue, New York, NY 10022</textarea>
+                    </div>
+                  </div>
+
+                  <!-- Usable Area & Zoning -->
+                  <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                      <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-sqft">Usable Area (Sq. Ft)</label>
+                      <input id="input-sqft" type="text" value="4,850 RSF" oninput="updateDocPreview()" class="w-full bg-transparent font-mono text-[12px] font-semibold text-neutral-900 outline-none" />
+                    </div>
+                    <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                      <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-zoning">Permitted Use</label>
+                      <input id="input-zoning" type="text" value="Class-A Commercial" class="w-full bg-transparent text-[12px] font-semibold text-neutral-900 outline-none" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Panel 3: Rental Terms -->
+              <div class="docgen-panel hidden space-y-3" id="panel-terms">
+                <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+                  <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Financial Consideration</span>
+                    <span class="text-[11px] font-mono text-neutral-400">Sec. 2.01</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2">
+                    <!-- Base Rent -->
+                    <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                      <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-rent">Monthly Base Rent</label>
+                      <div class="flex items-center gap-1 font-mono text-[13px] font-bold text-neutral-900">
+                        <span>$</span>
+                        <input id="input-rent" type="text" value="14,250.00" oninput="updateDocPreview()" class="w-full bg-transparent outline-none" />
+                      </div>
+                    </div>
+                    <!-- Deposit -->
+                    <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                      <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-deposit">Security Deposit</label>
+                      <div class="flex items-center gap-1 font-mono text-[13px] font-bold text-neutral-900">
+                        <span>$</span>
+                        <input id="input-deposit" type="text" value="42,750.00" oninput="updateDocPreview()" class="w-full bg-transparent outline-none" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tenure -->
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5] flex items-center justify-between">
+                    <div>
+                      <span class="block text-[10px] font-mono uppercase text-neutral-500">Initial Leasehold Tenure</span>
+                      <span class="text-[13px] font-semibold text-neutral-900">36 Full Calendar Months</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-neutral-200 rounded text-[11px] font-mono text-neutral-700">Fixed Index</span>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <!-- Compliance Checklist Pill -->
+            <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-xs flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[18px]">rule</span>
+                </div>
+                <div>
+                  <p class="text-[13px] font-semibold text-neutral-900">Compliance Validation</p>
+                  <p class="text-[11px] font-mono text-neutral-500">3/3 Mandatory Covenants Enforced</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-mono text-[11px] font-semibold border border-emerald-200">
+                100% Ready
+              </span>
+            </div>
+
+            <!-- Action Button -->
+            <div>
+              <button id="docgen-generate-btn" onclick="triggerDeedSynthesis()" class="w-full py-3.5 px-6 rounded-full bg-[#171717] text-white flex items-center justify-center gap-2 hover:bg-neutral-800 active:scale-[0.99] transition-all shadow-md">
+                <span class="text-[13px] font-mono uppercase tracking-wider font-semibold">Generate Legal Draft</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Real-Time Parchment Paper Preview (7 cols) -->
+          <div class="lg:col-span-7 space-y-3">
+            <div class="flex items-center justify-between px-1">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-neutral-500">visibility</span>
+                <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Real-Time Instrument Parchment</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="window.print()" class="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-white border border-[#E5E5E5] hover:bg-neutral-50 text-neutral-700 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">print</span>
+                  <span>Print</span>
+                </button>
+                <span class="px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 font-mono text-[10px] uppercase">
+                  Page 1 of 12
+                </span>
+              </div>
+            </div>
+
+            <!-- Parchment Paper Surface -->
+            <div class="relative bg-white rounded-2xl p-6 sm:p-8 border border-[#E5E5E5] shadow-md overflow-hidden min-h-[460px] parchment-sheet">
+              <!-- Watermark Stamp -->
+              <div class="watermark-stamp absolute right-4 top-8 w-36 h-36 rounded-full flex flex-col items-center justify-center opacity-10 text-neutral-900 border-2 border-dashed border-neutral-900">
+                <span class="material-symbols-outlined text-[36px]">verified_user</span>
+                <span class="font-mono text-[9px] font-bold tracking-widest uppercase">LEGALMATE</span>
+                <span class="font-mono text-[7px] tracking-wider uppercase">VERIFIED DRAFT</span>
+              </div>
+
+              <!-- Instrument Header -->
+              <div class="text-center space-y-1 mb-6 pb-4 border-b border-neutral-200">
+                <div class="font-mono text-[10px] tracking-widest uppercase text-neutral-400">Contract Instrument No. CRA-2025-0891</div>
+                <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900">Standard Commercial Lease</h3>
+                <div class="flex items-center justify-center gap-2 text-neutral-500 font-mono text-[11px]">
+                  <span>STATE OF NEW YORK</span>
+                  <span>•</span>
+                  <span>COUNTY OF NEW YORK</span>
+                </div>
+              </div>
+
+              <!-- Instrument Clauses -->
+              <div class="space-y-4 text-neutral-800 text-[13px] leading-relaxed">
+                <p class="text-justify leading-relaxed">
+                  THIS INDENTURE OF LEASE is made and entered into this <span class="font-mono font-medium underline underline-offset-4">04th</span> day of <span class="font-mono font-medium underline underline-offset-4">October</span>, 2026, by and between
+                  <span class="font-semibold text-neutral-900 bg-neutral-100 px-1.5 py-0.5 rounded transition-colors" id="preview-lessor">Vanguard Real Estate Trust</span> (hereinafter denominated the “Lessor”), and
+                  <span class="font-semibold text-neutral-900 bg-neutral-100 px-1.5 py-0.5 rounded transition-colors" id="preview-lessee">Apex Omnimedia LLP</span> (hereinafter denominated the “Lessee”).
+                </p>
+
+                <!-- Clause 1 -->
+                <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-[11px] font-semibold uppercase text-neutral-500">Clause 1. GRANT OF TENANCY</span>
+                    <span class="material-symbols-outlined text-[14px] text-neutral-400">lock</span>
+                  </div>
+                  <p class="text-justify leading-relaxed text-neutral-700">
+                    The Lessor hereby demises unto the Lessee all that piece and parcel of commercial property situated at
+                    <span class="font-mono text-neutral-900 font-medium bg-neutral-200 px-1.5 py-0.5 rounded" id="preview-premises">Suite 400, 750 Lexington Avenue, New York, NY 10022</span>,
+                    measuring approximately <span class="font-mono font-semibold text-neutral-900" id="preview-sqft">4,850 RSF</span>, together with ingress and egress easements appurtenant thereto.
+                  </p>
+                </div>
+
+                <!-- Clause 2 -->
+                <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-[11px] font-semibold uppercase text-neutral-500">Clause 2. RENT &amp; INDEMNITY BOND</span>
+                    <span class="material-symbols-outlined text-[14px] text-neutral-400">payments</span>
+                  </div>
+                  <p class="text-justify leading-relaxed text-neutral-700">
+                    Yielding and paying therefor a continuous Monthly Base Consideration of <span class="font-mono font-bold text-neutral-900">$<span id="preview-rent">14,250.00</span></span>, payable on or before the first calendar day of each successive monthly cycle, together with an earnest Security Deposit amounting to <span class="font-mono font-bold text-neutral-900">$<span id="preview-deposit">42,750.00</span></span> pledged upon full execution.
+                  </p>
+                </div>
+
+                <!-- Signature Execution Block -->
+                <div class="pt-6 grid grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <div class="h-0.5 bg-neutral-300 w-full"></div>
+                    <span class="block font-mono text-[10px] uppercase text-neutral-500">Authorized Signatory: Lessor</span>
+                    <span class="text-[12px] font-mono text-neutral-400 italic">Signed via LegalMate E-Vault</span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="h-0.5 bg-neutral-300 w-full"></div>
+                    <span class="block font-mono text-[10px] uppercase text-neutral-500">Authorized Signatory: Lessee</span>
+                    <span class="text-[12px] font-mono text-neutral-400 italic">Pending Execution</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 4: DOCUMENT RISK ANALYZER
+           ================================================================ -->
+      <section id="view-docanalyzer" class="app-view hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-6">
+        
+        <!-- Drag & Drop Zone -->
+        <div id="dropzone" onclick="triggerFileBrowser()" class="relative w-full rounded-2xl bg-white border-2 border-dashed border-neutral-300 p-6 sm:p-8 text-center cursor-pointer hover:border-black transition-colors group shadow-xs">
+          <div class="flex flex-col items-center space-y-2">
+            <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-800 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[26px]">upload_file</span>
+            </div>
+            <div>
+              <p class="text-[14px] font-bold text-neutral-900">Drop legal PDF (Contracts, Deeds, Notices) or click to browse</p>
+              <p class="text-[12px] text-neutral-500 mt-0.5">High-Fidelity OCR, Clause Extraction &amp; Risk Audit engine ready</p>
+            </div>
+            <div class="flex items-center gap-1.5 pt-1">
+              <span class="text-[10px] font-mono bg-neutral-100 px-2 py-0.5 rounded text-neutral-600">PDF</span>
+              <span class="text-[10px] font-mono bg-neutral-100 px-2 py-0.5 rounded text-neutral-600">DOCX</span>
+              <span class="text-[10px] font-mono bg-neutral-100 px-2 py-0.5 rounded text-neutral-600">MAX 100MB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Analyzed Document Status Banner -->
+        <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-xs flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 shrink-0">
+              <span class="material-symbols-outlined text-[20px]">description</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-[14px] font-bold text-neutral-900 truncate">Commercial_Supply_Agreement_v4.pdf</span>
+                <span class="w-2 h-2 rounded-full bg-[#ef4444] animate-pulse shrink-0"></span>
+              </div>
+              <span class="text-[11px] font-mono text-neutral-500 truncate">48 Pages • Scanned OCR (High Fidelity) • SHA-256 Validated</span>
+            </div>
+          </div>
+          <button onclick="LegalMate.showToast('Re-analyzing Commercial_Supply_Agreement_v4.pdf...', 'refresh')" class="p-2 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-neutral-600 hover:text-black transition-colors" title="Swap Document">
+            <span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+          </button>
+        </div>
+
+        <!-- Progress / Health Stats Pair -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white border border-[#E5E5E5] p-5 rounded-2xl shadow-xs space-y-3">
+            <div class="flex items-center justify-between text-neutral-500">
+              <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Obligations Audited</span>
+              <span class="material-symbols-outlined text-[18px] text-emerald-600">task_alt</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-3xl font-extrabold text-neutral-900">24 / 24</span>
+              <span class="text-[11px] font-mono text-emerald-600 font-semibold">100% parsed</span>
+            </div>
+            <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+              <div class="bg-[#171717] h-full rounded-full" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-[#E5E5E5] p-5 rounded-2xl shadow-xs space-y-3">
+            <div class="flex items-center justify-between text-red-600">
+              <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Exposure Index</span>
+              <span class="material-symbols-outlined text-[18px]">warning</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-3xl font-extrabold text-[#ef4444]">Moderate</span>
+              <span class="text-[11px] font-mono text-[#ef4444] font-semibold">2 Red Flags</span>
+            </div>
+            <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+              <div class="bg-[#ef4444] h-full rounded-full" style="width: 64%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Dual-Pane: Left Risk Factors (6 cols), Right Q&A (6 cols) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left: Executive Summary & Risk Factors (6 cols) -->
+          <div class="lg:col-span-6 space-y-4">
+            <!-- Executive Summary Card -->
+            <div class="bg-white border border-[#E5E5E5] p-5 sm:p-6 rounded-2xl shadow-xs space-y-4">
+              <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[20px] text-neutral-900">policy</span>
+                  <h3 class="text-[16px] font-bold text-neutral-900">Executive Summary &amp; Key Obligations</h3>
+                </div>
+                <button onclick="LegalMate.showToast('Exporting executive risk summary report...', 'download')" aria-label="Export" class="p-1 text-neutral-400 hover:text-black">
+                  <span class="material-symbols-outlined text-[18px]">share</span>
+                </button>
+              </div>
+
+              <!-- Obligations List -->
+              <div class="space-y-2.5">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-neutral-50 border border-[#E5E5E5]">
+                  <span class="material-symbols-outlined text-[18px] text-neutral-800 mt-0.5 shrink-0">check_circle</span>
+                  <div class="min-w-0">
+                    <p class="text-[13px] text-neutral-900 leading-snug">Net 30 payment terms with 1.5% monthly late fee compounding post-grace period.</p>
+                    <span class="text-[11px] font-mono text-neutral-500">§ 4.1 Payment Terms</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-neutral-50 border border-[#E5E5E5]">
+                  <span class="material-symbols-outlined text-[18px] text-neutral-800 mt-0.5 shrink-0">check_circle</span>
+                  <div class="min-w-0">
+                    <p class="text-[13px] text-neutral-900 leading-snug">Indemnification capped strictly at 2x aggregate annual contract value for intellectual property claims.</p>
+                    <span class="text-[11px] font-mono text-neutral-500">§ 11.3 IP Shield</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-neutral-50 border border-[#E5E5E5]">
+                  <span class="material-symbols-outlined text-[18px] text-neutral-800 mt-0.5 shrink-0">check_circle</span>
+                  <div class="min-w-0">
+                    <p class="text-[13px] text-neutral-900 leading-snug">Exclusive jurisdiction established under Delaware Court of Chancery with mandatory pre-litigation mediation.</p>
+                    <span class="text-[11px] font-mono text-neutral-500">§ 21.0 Dispute Resolution</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Identified Risk Factors (High & Medium) -->
+              <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5 text-red-600">
+                    <span class="material-symbols-outlined text-[18px]">crisis_alert</span>
+                    <span class="text-[12px] font-mono uppercase tracking-wider font-bold">Identified Risk Factors</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-red-100 text-red-700 font-bold">2 Actionable</span>
+                </div>
+
+                <!-- High Risk Item -->
+                <div class="p-4 bg-red-50/60 border border-red-200 rounded-xl space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-red-600 text-white font-bold">High Risk</span>
+                    <span class="text-[11px] font-mono text-neutral-500">Clause §14.2 • Page 19</span>
+                  </div>
+                  <p class="text-[13px] text-neutral-900 font-medium leading-snug">
+                    Uncapped consequential damages in §14.2 exposes enterprise to unlimited lost profit recovery upon default.
+                  </p>
+                  <button onclick="openRedlineModal('Clause §14.2 Consequential Damages', 'IN NO EVENT SHALL EITHER PARTY BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES...', 'Subject to Section 14.1, neither party shall be liable for indirect, incidental, or consequential damages; aggregate liability is strictly capped at fees paid in prior 12 months.')" class="text-[12px] font-semibold text-red-700 hover:underline flex items-center gap-1">
+                    <span>View Recommended Redline Diff</span>
+                    <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                  </button>
+                </div>
+
+                <!-- Medium Risk Item -->
+                <div class="p-4 bg-amber-50/60 border border-amber-200 rounded-xl space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-amber-600 text-white font-bold">Medium Risk</span>
+                    <span class="text-[11px] font-mono text-neutral-500">Clause §9.4 • Page 12</span>
+                  </div>
+                  <p class="text-[13px] text-neutral-900 font-medium leading-snug">
+                    Vague termination for convenience notice window (5 calendar days) offers insufficient vendor substitution lead-time.
+                  </p>
+                  <button onclick="openRedlineModal('Clause §9.4 Termination Window', 'Either party may terminate this agreement upon 5 calendar days written notice...', 'Either party may terminate this agreement for convenience upon not less than thirty (30) business days prior written notice.')" class="text-[12px] font-semibold text-neutral-900 hover:underline flex items-center gap-1">
+                    <span>Suggest 30-Day Window Redline</span>
+                    <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Document Q&A (6 cols) -->
+          <div class="lg:col-span-6 space-y-4">
+            <div class="bg-white border border-[#E5E5E5] p-5 sm:p-6 rounded-2xl shadow-xs space-y-4">
+              <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[20px] text-neutral-900">chat_bubble_outline</span>
+                  <h3 class="text-[16px] font-bold text-neutral-900">Interactive Doc Q&amp;A</h3>
+                </div>
+                <span class="text-[11px] font-mono text-neutral-500">Citations Grounded</span>
+              </div>
+
+              <!-- Quick Prompt Pills -->
+              <div class="flex items-center gap-2 overflow-x-auto pb-1">
+                <button onclick="sendDocQuestion('What is the governing law and arbitration clause?')" class="px-3 py-1.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-[12px] font-medium transition-colors shrink-0">
+                  🏛️ Governing Law
+                </button>
+                <button onclick="sendDocQuestion('Can we terminate without cause?')" class="px-3 py-1.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-[12px] font-medium transition-colors shrink-0">
+                  ✂️ Termination Terms
+                </button>
+                <button onclick="sendDocQuestion('What are our data confidentiality limits?')" class="px-3 py-1.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-[12px] font-medium transition-colors shrink-0">
+                  🔒 Confidentiality
+                </button>
+              </div>
+
+              <!-- Chat Message Thread -->
+              <div class="space-y-4 pt-1" id="docChatThread">
+                <!-- User Question -->
+                <div class="flex justify-end">
+                  <div class="max-w-[85%] bg-[#171717] text-white rounded-2xl rounded-tr-none px-4 py-3 shadow-xs">
+                    <p class="text-[13px] leading-relaxed">What happens if supplier fails SLA uptime metrics 2 months consecutively?</p>
+                  </div>
+                </div>
+
+                <!-- AI Grounded Answer -->
+                <div class="space-y-2">
+                  <div class="flex items-center gap-1.5">
+                    <div class="w-5 h-5 rounded-full bg-[#171717] text-white flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+                    </div>
+                    <span class="text-[12px] font-bold text-neutral-900">LegalMate AI</span>
+                    <span class="text-[10px] font-mono text-neutral-400">• Direct Retrieval</span>
+                  </div>
+                  <div class="bg-neutral-50 border border-[#E5E5E5] rounded-2xl rounded-tl-none p-4 space-y-3">
+                    <p class="text-[13px] text-neutral-800 leading-relaxed">
+                      Under recurring monthly downtime violations, the buyer is entitled to issue immediate default notice, claim a 20% service credit, and terminate without incurring cancellation penalties.
+                    </p>
+                    <!-- Citation Block -->
+                    <div class="p-3 bg-white border border-[#E5E5E5] rounded-xl space-y-1">
+                      <div class="flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                        <span class="flex items-center gap-1 font-semibold uppercase">
+                          <span class="material-symbols-outlined text-[14px]">find_in_page</span>
+                          Found in Clause 18.3, Page 22
+                        </span>
+                        <button onclick="LegalMate.showToast('Inspecting full text of Clause 18.3 on Page 22...', 'visibility')" class="text-neutral-900 font-semibold hover:underline">
+                          Inspect Page
+                        </button>
+                      </div>
+                      <p class="text-[12px] font-mono text-neutral-600 italic">
+                        "§18.3 Chronic Downtime: If Service Uptime dips below 99.5% for two (2) successive billing cycles, Customer may elect termination for cause effective immediately upon written notice..."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input Form -->
+              <form onsubmit="handleDocQuestionSubmit(event)" class="relative flex items-center pt-2">
+                <input id="docQuestionInput" type="text" placeholder="Ask anything about this document..." class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl py-2.5 pl-3.5 pr-12 focus:bg-white focus:border-black outline-none transition-colors" />
+                <button type="submit" aria-label="Submit Question" class="absolute right-1.5 w-8 h-8 rounded-lg bg-[#171717] text-white flex items-center justify-center hover:bg-neutral-800 active:scale-95 transition-transform">
+                  <span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 5: CASE MANAGEMENT SYSTEM (CMS)
+           ================================================================ -->
+      <section id="view-cms" class="app-view hidden w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-6">
+        <!-- Header & New Case Button -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Docket Registry</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">Active Litigation Portfolio</h1>
+          </div>
+          <button onclick="openNewCaseModal()" class="flex items-center gap-2 bg-[#171717] text-white text-[13px] font-medium px-4 py-2.5 rounded-xl hover:bg-neutral-800 transition-transform active:scale-95 shadow-sm shrink-0">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            <span>New Case Docket</span>
+          </button>
+        </div>
+
+        <!-- 3 Metric Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between text-neutral-500 mb-1">
+              <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Total Active Dockets</span>
+              <span class="material-symbols-outlined text-[18px]">gavel</span>
+            </div>
+            <div class="flex items-baseline gap-1 my-1">
+              <span class="text-3xl font-extrabold text-neutral-900" id="cms-total-count">34</span>
+            </div>
+            <div class="flex items-center text-[11px] font-mono text-emerald-600 font-semibold">
+              <span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+              <span>+2 new this week</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between text-neutral-500 mb-1">
+              <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Hearings Scheduled</span>
+              <span class="material-symbols-outlined text-[18px] text-[#ef4444]">event_upcoming</span>
+            </div>
+            <div class="flex items-baseline gap-1 my-1">
+              <span class="text-3xl font-extrabold text-neutral-900">4</span>
+            </div>
+            <div class="text-[11px] font-mono text-[#ef4444] font-semibold truncate">
+              Tomorrow 10:30 AM • High Court Div III
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between text-neutral-500 mb-1">
+              <span class="text-[11px] font-mono uppercase tracking-wider font-semibold">Enterprise Clients</span>
+              <span class="material-symbols-outlined text-[18px] text-neutral-700">verified</span>
+            </div>
+            <div class="flex items-baseline gap-1 my-1">
+              <span class="text-3xl font-extrabold text-neutral-900">18</span>
+            </div>
+            <div class="text-[11px] font-mono text-neutral-500">
+              98% Case Health Index
+            </div>
+          </div>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="space-y-3">
+          <div class="relative w-full">
+            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400 text-[20px] pointer-events-none">search</span>
+            <input id="cms-search-input" oninput="filterCases()" type="text" placeholder="Search by Case No, client, or court bench..." class="w-full bg-white border border-[#E5E5E5] text-neutral-900 text-[14px] pl-10 pr-10 py-2.5 rounded-xl shadow-2xs outline-none focus:border-black transition-colors" />
+            <button id="cms-clear-search" onclick="clearCaseSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black">
+              <span class="material-symbols-outlined text-[16px]">cancel</span>
+            </button>
+          </div>
+
+          <!-- Category Filter Chips -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1" id="cms-filter-chips">
+            <button onclick="setCaseFilter('all', this)" class="cms-chip active px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-[#171717] text-white transition-colors shrink-0">
+              All Cases (34)
+            </button>
+            <button onclick="setCaseFilter('civil', this)" class="cms-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0">
+              Civil (18)
+            </button>
+            <button onclick="setCaseFilter('criminal', this)" class="cms-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0">
+              Criminal (6)
+            </button>
+            <button onclick="setCaseFilter('corporate', this)" class="cms-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0">
+              Corporate / IP (10)
+            </button>
+          </div>
+        </div>
+
+        <!-- Case Docket Cards List -->
+        <div class="space-y-3.5" id="cms-docket-list">
+          
+          <!-- Case 1: Criminal -->
+          <div class="case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3" data-category="criminal" onclick="LegalMate.showCaseDetails('State of California v. Thorne Dynamics', '#CR-2024-8841', 'High Court Div III', 'Mar 18, 2025 • 10:30 AM', 'Cross-Examination', 'Corporate fraud and regulatory misrepresentation.')">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+                  <span class="text-neutral-900 font-semibold">#CR-2024-8841</span>
+                  <span>•</span>
+                  <span>High Court Div III</span>
+                  <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700">Criminal</span>
+                </div>
+                <h3 class="text-lg font-bold text-neutral-900 leading-snug">
+                  State of California v. Thorne Dynamics
+                </h3>
+              </div>
+              <button aria-label="Docket options" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+              </button>
+            </div>
+            <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+              <div class="flex items-center gap-1.5 font-mono text-[#ef4444] font-medium bg-red-50 border border-red-200 px-2.5 py-1 rounded-full">
+                <span class="material-symbols-outlined text-[14px]">schedule</span>
+                <span>Hearing: Mar 18, 2025 • 10:30 AM</span>
+              </div>
+              <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-neutral-700"></span>
+                <span>Stage: Cross-Examination</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case 2: Civil -->
+          <div class="case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3" data-category="civil" onclick="LegalMate.showCaseDetails('Meridian Holdings v. Zenith Capital', '#CV-2024-1029', 'Commercial Bench', 'Mar 22, 2025 • 02:00 PM', 'Interlocutory Arguments', 'Contractual breach of warranty and debt recovery dispute.')">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+                  <span class="text-neutral-900 font-semibold">#CV-2024-1029</span>
+                  <span>•</span>
+                  <span>Commercial Bench</span>
+                  <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700">Civil</span>
+                </div>
+                <h3 class="text-lg font-bold text-neutral-900 leading-snug">
+                  Meridian Holdings v. Zenith Capital
+                </h3>
+              </div>
+              <button aria-label="Docket options" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+              </button>
+            </div>
+            <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+              <div class="flex items-center gap-1.5 font-mono text-neutral-800 bg-neutral-100 px-2.5 py-1 rounded-full">
+                <span class="material-symbols-outlined text-[14px] text-neutral-500">schedule</span>
+                <span>Hearing: Mar 22, 2025 • 02:00 PM</span>
+              </div>
+              <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-neutral-700"></span>
+                <span>Stage: Interlocutory Arguments</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case 3: Corporate / IP -->
+          <div class="case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3" data-category="corporate" onclick="LegalMate.showCaseDetails('Apex Biosystems Patent Infringement', '#IP-2025-0042', 'Federal Circuit', 'Apr 04, 2025 • 11:00 AM', 'Pleadings Complete', 'Cross-licensing patent dispute over mRNA formulation synthesis.')">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+                  <span class="text-neutral-900 font-semibold">#IP-2025-0042</span>
+                  <span>•</span>
+                  <span>Federal Circuit</span>
+                  <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700">Corporate</span>
+                </div>
+                <h3 class="text-lg font-bold text-neutral-900 leading-snug">
+                  Apex Biosystems Patent Infringement
+                </h3>
+              </div>
+              <button aria-label="Docket options" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+              </button>
+            </div>
+            <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+              <div class="flex items-center gap-1.5 font-mono text-neutral-800 bg-neutral-100 px-2.5 py-1 rounded-full">
+                <span class="material-symbols-outlined text-[14px] text-neutral-500">schedule</span>
+                <span>Hearing: Apr 04, 2025 • 11:00 AM</span>
+              </div>
+              <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>Stage: Pleadings Complete</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time PACER CourtSync Banner -->
+        <div class="p-4 rounded-2xl bg-white border border-[#E5E5E5] shadow-xs flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-900">
+              <span class="material-symbols-outlined text-[20px]">sync_alt</span>
+            </div>
+            <div>
+              <p class="text-[13px] font-bold text-neutral-900">Real-Time PACER / CourtSync</p>
+              <p class="text-[11px] font-mono text-neutral-500">All federal &amp; state calendars synchronized 4m ago</p>
+            </div>
+          </div>
+          <button onclick="LegalMate.triggerPacerSync()" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+            Sync Now
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         MOBILE BOTTOM NAVIGATION BAR (< 1024px)
+         ==================================================================== -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-[#E5E5E5] pb-safe shadow-lg">
+      <div class="h-16 px-3 flex items-center justify-around gap-1">
+        <a href="#dashboard" data-path="dashboard" class="mobile-tab-btn flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full transition-colors bg-[#171717] text-white">
+          <span class="material-symbols-outlined text-[20px]">grid_view</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Home</span>
+        </a>
+
+        <a href="#assistant" data-path="assistant" class="mobile-tab-btn flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black transition-colors">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Assistant</span>
+        </a>
+
+        <a href="#docgen" data-path="docgen" class="mobile-tab-btn flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black transition-colors">
+          <span class="material-symbols-outlined text-[20px]">note_add</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">DocGen</span>
+        </a>
+
+        <a href="#docanalyzer" data-path="docanalyzer" class="mobile-tab-btn flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black transition-colors">
+          <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Analyzer</span>
+        </a>
+
+        <a href="#cms" data-path="cms" class="mobile-tab-btn flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black transition-colors">
+          <span class="material-symbols-outlined text-[20px]">folder_open</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Cases</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ====================================================================
+       INTERACTIVE MODALS & DRAWERS
+       ==================================================================== -->
+
+  <!-- Modal 1: Case Details Drawer / Modal -->
+  <div id="case-detail-modal" class="legalmate-modal hidden fixed inset-0 z-[1100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-[#E5E5E5] overflow-hidden" onclick="event.stopPropagation()">
+      <div class="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+        <div>
+          <span id="modal-case-no" class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">#CR-2024-8841</span>
+          <h3 id="modal-case-title" class="text-xl font-bold text-neutral-900 mt-0.5">State of California v. Thorne Dynamics</h3>
+        </div>
+        <button onclick="document.getElementById('case-detail-modal').classList.add('hidden')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-[12px] bg-neutral-50 p-4 rounded-xl border border-[#E5E5E5]">
+          <div>
+            <span class="text-[10px] font-mono uppercase text-neutral-400 block">Court Bench</span>
+            <span id="modal-case-bench" class="font-semibold text-neutral-900">High Court Div III</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-mono uppercase text-neutral-400 block">Next Hearing</span>
+            <span id="modal-case-hearing" class="font-semibold text-[#ef4444]">Mar 18, 2025</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-mono uppercase text-neutral-400 block">Current Stage</span>
+            <span id="modal-case-stage" class="font-semibold text-neutral-900">Cross-Examination</span>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <h4 class="text-[12px] font-mono uppercase text-neutral-400 font-semibold">Matter Overview &amp; Summary</h4>
+          <p id="modal-case-desc" class="text-[13px] text-neutral-700 leading-relaxed">
+            Corporate litigation regarding non-compete covenants and alleged breach of confidentiality under trade secret statutes.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-[12px] font-mono uppercase text-neutral-400 font-semibold">Recent PACER Filings</h4>
+          <div class="space-y-2 text-[12px]">
+            <div class="p-3 rounded-lg border border-[#E5E5E5] flex items-center justify-between">
+              <div>
+                <span class="font-semibold text-neutral-900 block">Doc #42: Motion in Limine</span>
+                <span class="text-neutral-500 font-mono text-[11px]">Filed by Defense Counsel • Certified</span>
+              </div>
+              <span class="text-[11px] font-mono text-neutral-400">2d ago</span>
+            </div>
+            <div class="p-3 rounded-lg border border-[#E5E5E5] flex items-center justify-between">
+              <div>
+                <span class="font-semibold text-neutral-900 block">Doc #41: Notice of Deposition</span>
+                <span class="text-neutral-500 font-mono text-[11px]">Filed by State Prosecutor • Subpoena Issued</span>
+              </div>
+              <span class="text-[11px] font-mono text-neutral-400">5d ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 border-t border-[#E5E5E5] bg-neutral-50 flex items-center justify-end gap-2">
+        <button onclick="LegalMate.showToast('Docket dossier downloaded as PDF', 'download')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+          Download Docket Dossier
+        </button>
+        <button onclick="document.getElementById('case-detail-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Redline Comparison Modal -->
+  <div id="redline-modal" class="legalmate-modal hidden fixed inset-0 z-[1100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-[#E5E5E5] overflow-hidden" onclick="event.stopPropagation()">
+      <div class="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+        <div>
+          <span class="text-[11px] font-mono text-red-600 uppercase tracking-wider font-semibold">Recommended Redline Diff</span>
+          <h3 id="redline-clause-title" class="text-lg font-bold text-neutral-900 mt-0.5">Clause §14.2 Consequential Damages</h3>
+        </div>
+        <button onclick="document.getElementById('redline-modal').classList.add('hidden')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-red-50/50 border border-red-200 space-y-2">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-red-700 font-bold block">Original Contract Verbiage</span>
+            <p id="redline-original-text" class="text-[13px] text-neutral-800 font-mono leading-relaxed line-through text-red-900/70">
+              IN NO EVENT SHALL EITHER PARTY BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES...
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200 space-y-2">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-700 font-bold block">LegalMate Proposed Amendment</span>
+            <p id="redline-proposed-text" class="text-[13px] text-neutral-900 font-mono leading-relaxed text-emerald-950 font-medium">
+              Subject to Section 14.1, neither party shall be liable for indirect, incidental, or consequential damages; aggregate liability is strictly capped at fees paid in prior 12 months.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 border-t border-[#E5E5E5] bg-neutral-50 flex items-center justify-between">
+        <span class="text-[11px] font-mono text-neutral-500">Delaware General Corporation Law § 145 Compliant</span>
+        <div class="flex items-center gap-2">
+          <button onclick="LegalMate.showToast('Redline copied to clipboard', 'content_copy')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+            Copy Redline
+          </button>
+          <button onclick="LegalMate.showToast('Proposed redline applied to draft instrument', 'verified'); document.getElementById('redline-modal').classList.add('hidden');" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors">
+            Apply Amendment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Precedent Dossier Modal -->
+  <div id="precedent-modal" class="legalmate-modal hidden fixed inset-0 z-[1100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-[#E5E5E5] overflow-hidden" onclick="event.stopPropagation()">
+      <div class="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+        <div>
+          <span id="precedent-modal-cite" class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">1967 SCR (1) 378</span>
+          <h3 id="precedent-modal-title" class="text-xl font-bold text-neutral-900 mt-0.5">Niranjan Shankar Golikari v. Century Spg. &amp; Mfg. Co.</h3>
+        </div>
+        <button onclick="document.getElementById('precedent-modal').classList.add('hidden')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="p-3 rounded-xl bg-neutral-50 border border-[#E5E5E5] text-[12px]">
+          <span class="text-[10px] font-mono uppercase text-neutral-400 block">Bench &amp; Quorum</span>
+          <span id="precedent-modal-bench" class="font-semibold text-neutral-900">Supreme Court (3-Judge Bench)</span>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">Ratio Decidendi &amp; Benchmark Holding</h4>
+          <p id="precedent-modal-holding" class="text-[13px] text-neutral-800 font-mono leading-relaxed bg-neutral-50 p-4 rounded-xl border border-[#E5E5E5]">
+            Negative covenants operative during the period of employment when the employee is bound to serve his employer exclusively are not to be regarded as restraint of trade under Section 27.
+          </p>
+        </div>
+      </div>
+      <div class="p-4 border-t border-[#E5E5E5] bg-neutral-50 flex items-center justify-between">
+        <span class="text-[11px] font-mono text-emerald-600 font-semibold">Shepard's Signal: Positive Law</span>
+        <button onclick="LegalMate.showToast('Precedent citation copied to clipboard', 'content_copy')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors">
+          Copy Citation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: New Case Docket Wizard -->
+  <div id="new-case-modal" class="legalmate-modal hidden fixed inset-0 z-[1100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl border border-[#E5E5E5] overflow-hidden" onclick="event.stopPropagation()">
+      <div class="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-neutral-50">
+        <div>
+          <span class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">Docket Onboarding Wizard</span>
+          <h3 class="text-xl font-bold text-neutral-900 mt-0.5">Register New Case Matter</h3>
+        </div>
+        <button onclick="document.getElementById('new-case-modal').classList.add('hidden')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <form onsubmit="handleNewCaseSubmit(event)" class="p-6 space-y-4">
+        <div class="space-y-1">
+          <label class="block text-[11px] font-mono uppercase text-neutral-500" for="new-case-title-input">Case Title / Matter Name</label>
+          <input id="new-case-title-input" required type="text" placeholder="e.g. Apex Global v. Horizon Ventures" class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none focus:bg-white focus:border-black transition-colors" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="space-y-1">
+            <label class="block text-[11px] font-mono uppercase text-neutral-500" for="new-case-category-input">Category</label>
+            <select id="new-case-category-input" class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none">
+              <option value="civil">Civil Litigation</option>
+              <option value="criminal">Criminal Defense</option>
+              <option value="corporate">Corporate / IP</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="block text-[11px] font-mono uppercase text-neutral-500" for="new-case-court-input">Court / Bench</label>
+            <input id="new-case-court-input" required type="text" placeholder="e.g. Federal Circuit Div II" class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none focus:bg-white focus:border-black transition-colors" />
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label class="block text-[11px] font-mono uppercase text-neutral-500" for="new-case-desc-input">Primary Legal Claim &amp; Summary</label>
+          <textarea id="new-case-desc-input" rows="3" placeholder="Summary of cause of action, governing law, and prayer..." class="w-full bg-neutral-50 border border-[#E5E5E5] text-neutral-900 text-[13px] rounded-xl px-3 py-2 outline-none focus:bg-white focus:border-black transition-colors resize-none"></textarea>
+        </div>
+        <div class="pt-3 border-t border-[#E5E5E5] flex items-center justify-end gap-2">
+          <button type="button" onclick="document.getElementById('new-case-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors">
+            Cancel
+          </button>
+          <button type="submit" class="px-4 py-2 rounded-xl text-[12px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors">
+            Initialize Docket
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript Controller -->
+  <script src="js/legalmate.js"></script>
+
+  <!-- Page-Specific Inline Helpers -->
+  <script>
+    /* Document Generator Real-time Updates */
+    function updateDocPreview() {
+      const lessor = document.getElementById('input-lessor').value || '________________';
+      const lessee = document.getElementById('input-lessee').value || '________________';
+      const premises = document.getElementById('input-premises').value || '________________';
+      const sqft = document.getElementById('input-sqft').value || '4,850 RSF';
+      const rent = document.getElementById('input-rent').value || '0.00';
+      const deposit = document.getElementById('input-deposit').value || '0.00';
+
+      document.getElementById('preview-lessor').innerText = lessor;
+      document.getElementById('preview-lessee').innerText = lessee;
+      document.getElementById('preview-premises').innerText = premises;
+      document.getElementById('preview-sqft').innerText = sqft;
+      document.getElementById('preview-rent').innerText = rent;
+      document.getElementById('preview-deposit').innerText = deposit;
+    }
+
+    function switchDocGenSection(sec) {
+      ['parties', 'premises', 'terms'].forEach(k => {
+        const panel = document.getElementById(`panel-${k}`);
+        const tab = document.getElementById(`tab-${k}`);
+        if (k === sec) {
+          panel.classList.remove('hidden');
+          tab.className = 'tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full bg-[#171717] text-white font-semibold transition-all';
+        } else {
+          panel.classList.add('hidden');
+          tab.className = 'tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full text-neutral-600 hover:text-black transition-all';
+        }
+      });
+    }
+
+    function switchDocGenStep(step) {
+      const btn1 = document.getElementById('step-btn-1');
+      const btn2 = document.getElementById('step-btn-2');
+      if (step === 1) {
+        btn1.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full bg-[#171717] text-white shadow-xs transition-all text-[12px] font-mono uppercase font-semibold';
+        btn2.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full text-neutral-600 hover:text-black transition-all text-[12px] font-mono uppercase font-semibold';
+      } else {
+        btn2.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full bg-[#171717] text-white shadow-xs transition-all text-[12px] font-mono uppercase font-semibold';
+        btn1.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full text-neutral-600 hover:text-black transition-all text-[12px] font-mono uppercase font-semibold';
+        LegalMate.showToast('Step 2: Ready for digital seal and bilateral execution', 'verified');
+      }
+    }
+
+    function triggerDeedSynthesis() {
+      const btn = document.getElementById('docgen-generate-btn');
+      const originalHtml = btn.innerHTML;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> <span class="text-[13px] font-mono uppercase tracking-wider font-semibold">Synthesizing Instrument...</span>`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">check_circle</span> <span class="text-[13px] font-mono uppercase tracking-wider font-semibold">Deed Synthesized &amp; Sealed</span>`;
+        btn.classList.remove('bg-[#171717]');
+        btn.classList.add('bg-emerald-600');
+        LegalMate.showToast('Commercial Rental Agreement CRA-2025-0891 Synthesized!', 'verified');
+        switchDocGenStep(2);
+
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.disabled = false;
+          btn.classList.add('bg-[#171717]');
+          btn.classList.remove('bg-emerald-600');
+        }, 3000);
+      }, 1200);
+    }
+
+    /* Assistant Reasoning & Citations */
+    function toggleAssistantReasoning() {
+      const body = document.getElementById('assistant-reasoning-body');
+      const icon = document.getElementById('assistant-reasoning-icon');
+      if (body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        body.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    function copyCitationText() {
+      const text = "Section 27, Indian Contract Act 1872; Niranjan Shankar Golikari (1967 SCR (1) 378); Percept D'Mark (AIR 2006 SC 3426).";
+      navigator.clipboard?.writeText(text);
+      const textEl = document.getElementById('btn-copy-citation-text');
+      const orig = textEl.textContent;
+      textEl.textContent = 'Copied to Clipboard';
+      LegalMate.showToast('Statutory citations copied to clipboard', 'content_copy');
+      setTimeout(() => {
+        textEl.textContent = orig;
+      }, 2000);
+    }
+
+    window.fillAssistantPrompt = function(query) {
+      const input = document.getElementById('assistant-query-input');
+      if (input) {
+        input.value = query;
+        input.focus();
+      }
+    };
+
+    function handleAssistantQuerySubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('assistant-query-input');
+      const q = input.value.trim();
+      if (!q) return;
+      input.value = '';
+      LegalMate.showToast(`Synthesizing legal authority for: "${q.slice(0, 32)}..."`, 'auto_awesome', 2000);
+    }
+
+    /* Precedent Inspection Modal */
+    function showPrecedentDetail(title, cite, bench, holding) {
+      document.getElementById('precedent-modal-title').textContent = title;
+      document.getElementById('precedent-modal-cite').textContent = cite;
+      document.getElementById('precedent-modal-bench').textContent = bench;
+      document.getElementById('precedent-modal-holding').textContent = `"${holding}"`;
+      document.getElementById('precedent-modal').classList.remove('hidden');
+    }
+
+    /* Redline Modal */
+    function openRedlineModal(title, originalText, proposedText) {
+      document.getElementById('redline-clause-title').textContent = title;
+      document.getElementById('redline-original-text').textContent = originalText;
+      document.getElementById('redline-proposed-text').textContent = proposedText;
+      document.getElementById('redline-modal').classList.remove('hidden');
+    }
+
+    /* Document Analyzer Chat & Upload */
+    function triggerFileBrowser() {
+      LegalMate.showToast('Document File Picker opened • Processing OCR high fidelity', 'upload_file');
+    }
+
+    function sendDocQuestion(query) {
+      const input = document.getElementById('docQuestionInput');
+      if (input) {
+        input.value = query;
+        handleDocQuestionSubmit(new Event('submit'));
+      }
+    }
+
+    function handleDocQuestionSubmit(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('docQuestionInput');
+      const q = input.value.trim();
+      if (!q) return;
+
+      const thread = document.getElementById('docChatThread');
+      
+      // User div
+      const userDiv = document.createElement('div');
+      userDiv.className = 'flex justify-end';
+      userDiv.innerHTML = `
+        <div class="max-w-[85%] bg-[#171717] text-white rounded-2xl rounded-tr-none px-4 py-3 shadow-xs">
+          <p class="text-[13px] leading-relaxed">${q.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+        </div>
+      `;
+      thread.appendChild(userDiv);
+      input.value = '';
+
+      // AI div
+      setTimeout(() => {
+        const aiDiv = document.createElement('div');
+        aiDiv.className = 'space-y-2';
+        aiDiv.innerHTML = `
+          <div class="flex items-center gap-1.5">
+            <div class="w-5 h-5 rounded-full bg-[#171717] text-white flex items-center justify-center">
+              <span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+            </div>
+            <span class="text-[12px] font-bold text-neutral-900">LegalMate AI</span>
+            <span class="text-[10px] font-mono text-neutral-400">• Direct Retrieval</span>
+          </div>
+          <div class="bg-neutral-50 border border-[#E5E5E5] rounded-2xl rounded-tl-none p-4 space-y-3">
+            <p class="text-[13px] text-neutral-800 leading-relaxed">
+              Synthesized response for your query. The instrument provides standard covenants governed by Delaware law with reciprocal obligations and standard survival warranties.
+            </p>
+            <div class="p-3 bg-white border border-[#E5E5E5] rounded-xl space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                <span class="flex items-center gap-1 font-semibold uppercase">
+                  <span class="material-symbols-outlined text-[14px]">find_in_page</span>
+                  Found in Clause 21.2, Page 29
+                </span>
+                <button onclick="LegalMate.showToast('Inspecting Clause 21.2 on Page 29...', 'visibility')" class="text-neutral-900 font-semibold hover:underline">
+                  Inspect Page
+                </button>
+              </div>
+              <p class="text-[12px] font-mono text-neutral-600 italic">
+                "§21.2 Each party irrevocably submits to the jurisdiction of the Delaware Court of Chancery..."
+              </p>
+            </div>
+          </div>
+        `;
+        thread.appendChild(aiDiv);
+        LegalMate.showToast('Extracted 1 relevant statutory citation from PDF', 'verified');
+      }, 400);
+    }
+
+    /* Case Management Logic */
+    LegalMate.showCaseDetails = function(title, no = '#CV-2024-1029', bench = 'Commercial Bench', hearing = 'Mar 22, 2025 • 02:00 PM', stage = 'Interlocutory Arguments', desc = 'Active litigation docket.') {
+      document.getElementById('modal-case-title').textContent = title;
+      document.getElementById('modal-case-no').textContent = no;
+      document.getElementById('modal-case-bench').textContent = bench;
+      document.getElementById('modal-case-hearing').textContent = hearing;
+      document.getElementById('modal-case-stage').textContent = stage;
+      document.getElementById('modal-case-desc').textContent = desc;
+      document.getElementById('case-detail-modal').classList.remove('hidden');
+    };
+
+    function openNewCaseModal() {
+      document.getElementById('new-case-modal').classList.remove('hidden');
+    }
+
+    function handleNewCaseSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('new-case-title-input').value.trim();
+      const cat = document.getElementById('new-case-category-input').value;
+      const court = document.getElementById('new-case-court-input').value.trim();
+      const desc = document.getElementById('new-case-desc-input').value.trim() || 'Newly onboarded case matter.';
+
+      const docketList = document.getElementById('cms-docket-list');
+      const randomNo = `#${cat === 'criminal' ? 'CR' : (cat === 'civil' ? 'CV' : 'IP')}-2025-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      const newCard = document.createElement('div');
+      newCard.className = 'case-card cursor-pointer p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all shadow-xs space-y-3';
+      newCard.setAttribute('data-category', cat);
+      newCard.onclick = () => LegalMate.showCaseDetails(title, randomNo, court, 'Scheduled via PACER', 'Pleadings Stage', desc);
+      newCard.innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 mb-1 text-[11px] font-mono text-neutral-500">
+              <span class="text-neutral-900 font-semibold">${randomNo}</span>
+              <span>•</span>
+              <span>${court}</span>
+              <span class="px-2 py-0.2 rounded bg-neutral-100 text-neutral-700 capitalize">${cat}</span>
+            </div>
+            <h3 class="text-lg font-bold text-neutral-900 leading-snug">${title}</h3>
+          </div>
+          <button aria-label="Docket options" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+          </button>
+        </div>
+        <div class="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 text-[12px]">
+          <div class="flex items-center gap-1.5 font-mono text-neutral-800 bg-neutral-100 px-2.5 py-1 rounded-full">
+            <span class="material-symbols-outlined text-[14px] text-neutral-500">schedule</span>
+            <span>Hearing: To Be Listed</span>
+          </div>
+          <div class="flex items-center gap-1 font-mono text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            <span>Stage: Initial Filing</span>
+          </div>
+        </div>
+      `;
+
+      docketList.insertBefore(newCard, docketList.firstChild);
+      document.getElementById('new-case-modal').classList.add('hidden');
+      e.target.reset();
+
+      const countEl = document.getElementById('cms-total-count');
+      if (countEl) countEl.textContent = parseInt(countEl.textContent || '34') + 1;
+      LegalMate.showToast(`Case Matter "${title}" Registered Successfully!`, 'verified');
+    }
+
+    let activeCaseFilter = 'all';
+
+    function setCaseFilter(category, btn) {
+      activeCaseFilter = category;
+      document.querySelectorAll('.cms-chip').forEach(b => {
+        b.className = 'cms-chip px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-white border border-[#E5E5E5] text-neutral-600 hover:text-black transition-colors shrink-0';
+      });
+      btn.className = 'cms-chip active px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-[#171717] text-white transition-colors shrink-0';
+      filterCases();
+    }
+
+    function filterCases() {
+      const q = (document.getElementById('cms-search-input').value || '').toLowerCase().trim();
+      const clearBtn = document.getElementById('cms-clear-search');
+      if (q) clearBtn.classList.remove('hidden');
+      else clearBtn.classList.add('hidden');
+
+      document.querySelectorAll('#cms-docket-list .case-card').forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const text = card.textContent.toLowerCase();
+        const matchesCat = (activeCaseFilter === 'all') || (cat === activeCaseFilter);
+        const matchesQuery = !q || text.includes(q);
+
+        if (matchesCat && matchesQuery) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function clearCaseSearch() {
+      const input = document.getElementById('cms-search-input');
+      input.value = '';
+      filterCases();
+      input.focus();
+    }
+  </script>
+</body>
+</html>

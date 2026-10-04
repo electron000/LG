@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#e2e2e2", "inverse-on-surface": "#f2f0f0", "surface-container": "#efeded", "tertiary": "#000000", "on-surface": "#1b1c1c", "on-tertiary-container": "#ef4444", "on-secondary-fixed": "#1a1c1c", "inverse-surface": "#303031", "surface-variant": "#e3e2e2", "outline": "#747878", "surface-tint": "#5f5e5e", "surface-container-high": "#e9e8e7", "secondary-container": "#dcdddd", "surface": "#fbf9f9", "surface-dim": "#dbdad9", "on-primary": "#ffffff", "on-secondary-container": "#5f6161", "tertiary-fixed-dim": "#ffb3ad", "on-primary-container": "#858383", "error-container": "#ffdad6", "on-secondary": "#ffffff", "on-tertiary-fixed-variant": "#930013", "error": "#ba1a1a", "primary-fixed-dim": "#c8c6c5", "surface-container-lowest": "#ffffff", "on-error-container": "#93000a", "tertiary-fixed": "#ffdad7", "secondary-fixed-dim": "#c6c6c7", "on-secondary-fixed-variant": "#454747", "surface-container-low": "#f5f3f3", "surface-container-highest": "#e3e2e2", "primary-container": "#1c1b1b", "primary": "#000000", "on-primary-fixed": "#1c1b1b", "on-primary-fixed-variant": "#474746", "surface-bright": "#fbf9f9", "on-background": "#1b1c1c", "background": "#fbf9f9", "secondary": "#5d5f5f", "on-tertiary": "#ffffff", "on-surface-variant": "#444748", "inverse-primary": "#c8c6c5", "on-tertiary-fixed": "#410004", "tertiary-container": "#410004", "outline-variant": "#c4c7c7", "primary-fixed": "#e5e2e1", "on-error": "#ffffff" }, borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" }, spacing: { "space-xl": "2.5rem", "gutter": "1.5rem", "gutter-mobile": "0.75rem", "space-xs": "0.25rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin": "2rem" }, fontFamily: { "headline-sm": ["Inter"], "body-lg": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"], "display": ["Inter"], "headline-md": ["Inter"], "citation-mono": ["JetBrains Mono"], "label-sm": ["JetBrains Mono"], "display-mobile": ["Inter"], "body-md": ["Inter"] }, fontSize: { "headline-sm": ["18px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "500" }], "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "400" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "500" }], "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0.005em", fontWeight: "400" }], "display": ["48px", { lineHeight: "52px", letterSpacing: "-0.03em", fontWeight: "600" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "500" }], "citation-mono": ["12px", { lineHeight: "18px", letterSpacing: "-0.01em", fontWeight: "400" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }], "display-mobile": ["32px", { lineHeight: "38px", letterSpacing: "-0.025em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="LegalMate AI Wordmark Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WSe3rBet07KjqsVeTxl2yVmmXwBVceEzASXR0fBObiegGHAFMhoKajzcuyOZbR_0PV8z_XOeAFreChYZhSfpMCuYMB9OBbKzg31QJOl6Bo9NKc0R1w_BRTGoQ-LIiLAdPpyD12HdSj80V5iimZ9NUHWJ5V5_KmrRAYhQjzRH0ldswkg_uYvhBRRnuFIKjbQtUbJB5KivtI1RolBL8jVBy7NeoSRbz_nIATp2NiHLtDl5Jj5YSf_GU6DQCJ"/><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest leading-none">LegalMate</span><span class="font-headline-sm text-headline-sm text-on-surface truncate">Docanalyzer</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors rounded-lg"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-on-tertiary-container"></span></button><button aria-label="User Profile" class="w-11 h-11 flex items-center justify-center rounded-full hover:opacity-90 transition-opacity"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOXt6psKxGHEG7Jg5RoGF2HNCjdHiJnbGj_DC_xfSroIkRpUAQz-TGtH0Y7onD3JnvL8YXgYSFdSpE6C_S4bSrXYzPLNlBdvyhJ3b06LDrti4z_CZMH0_EMfR5gde6wCaLfW1RugopyGqCcrhwnNVzM9hQaX35pScVeGImnUZ3uVEZbqb6sW7JOEzNhzh2Ooudyxmbc_ckjyaRTtavkhOI2ZA0wfxuclSDbmvzlZe8vMw9BM1sIs0aeg"/></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full px-gutter-mobile space-y-space-md pb-6">
+<!-- Micro Delight Toast Notification (Triggered on Action) -->
+<div class="fixed top-20 left-4 right-4 z-50 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center justify-between p-3.5 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-lg" id="actionToast">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">verified</span>
+<span class="font-label-md text-label-md" id="toastMessage">Clause cited and verified in corpus</span>
+</div>
+<span class="font-citation-mono text-citation-mono text-surface-variant">0.12s</span>
+</div>
+<!-- Drag-and-Drop / Upload Zone -->
+<section class="relative w-full rounded-xl bg-surface-container-low p-space-md transition-all active:scale-[0.99] cursor-pointer overflow-hidden shadow-sm" id="dropzone">
+<!-- Dotted faux-border via SVG stroke to ensure strict hairline fidelity without border classes -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="calc(100% - 2px)" rx="10" stroke="#D1D5DB" stroke-dasharray="5 4" stroke-width="1.5" width="calc(100% - 2px)" x="1" y="1"></rect>
+</svg>
+<div class="relative flex flex-col items-center text-center py- space-y-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary shadow-sm transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-[26px]">upload_file</span>
+</div>
+<div class="space-y-0.5">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Drop legal PDF (Contracts, Deeds, Notices) or tap to browse</p>
+<p class="font-body-sm text-body-sm text-secondary">OCR, Clause Extraction, Risk Audit enabled</p>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="font-label-sm text-label-sm uppercase bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full">PDF</span>
+<span class="font-label-sm text-label-sm uppercase bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full">DOCX</span>
+<span class="font-label-sm text-label-sm uppercase bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full">MAX 100MB</span>
+</div>
+</div>
+</section>
+<!-- Active Analyzed Document Status Banner -->
+<section class="flex items-center justify-between w-full bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<div class="flex items-center space-x-2.5 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Commercial_Supply_Agreement_v4.pdf</span>
+<span class="flex-shrink-0 w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+</div>
+<span class="font-citation-mono text-citation-mono text-secondary truncate">48 Pages • Scanned OCR (High Fidelity)</span>
+</div>
+</div>
+<button aria-label="Change document" class="flex-shrink-0 ml-2 p-1.5 rounded-lg text-secondary hover:text-on-surface bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+</button>
+</section>
+<!-- Visual Document Progress / Health Stat Pair -->
+<section class="grid grid-cols-2 gap-2.5 w-full">
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm uppercase">Obligations Audited</span>
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">24 / 24</span>
+<span class="font-citation-mono text-citation-mono text-secondary">100% parsed</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-primary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-tertiary-container">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Exposure Index</span>
+<span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-on-tertiary-container font-semibold">Moderate</span>
+<span class="font-citation-mono text-citation-mono text-on-tertiary-container font-semibold">2 Red Flags</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-on-tertiary-container h-full rounded-full" style="width: 64%;"></div>
+</div>
+</div>
+</section>
+<!-- Executive Summary Card -->
+<section class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[20px] text-primary">policy</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Executive Summary &amp; Risk Audit</h2>
+</div>
+<button aria-label="Export Summary" class="text-secondary hover:text-on-surface p-1 rounded-lg">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+<!-- Key Obligations List -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Key Obligations Detected</span>
+<span class="font-label-sm text-label-sm text-secondary">3 Critical</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-start space-x-2.5 p-2.5 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5 flex-shrink-0">check_circle</span>
+<div class="min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">Net 30 payment terms with 1.5% monthly late fee compounding post-grace period.</p>
+<span class="font-citation-mono text-citation-mono text-secondary">§ 4.1 Payment Terms</span>
+</div>
+</div>
+<div class="flex items-start space-x-2.5 p-2.5 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5 flex-shrink-0">check_circle</span>
+<div class="min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">Indemnification capped strictly at 2x aggregate annual contract value for intellectual property claims.</p>
+<span class="font-citation-mono text-citation-mono text-secondary">§ 11.3 IP Shield</span>
+</div>
+</div>
+<div class="flex items-start space-x-2.5 p-2.5 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5 flex-shrink-0">check_circle</span>
+<div class="min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">Exclusive jurisdiction established under Delaware Court of Chancery with mandatory pre-litigation mediation.</p>
+<span class="font-citation-mono text-citation-mono text-secondary">§ 21.0 Dispute Resolution</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Red-Tinted Risk Factors Callout Card -->
+<div class="rounded-xl bg-error-container p-3.5 space-y-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">crisis_alert</span>
+<span class="font-label-md text-label-md text-on-tertiary-container font-semibold">Identified Risk Factors</span>
+</div>
+<span class="font-label-sm text-label-sm uppercase font-semibold px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-tertiary-container">2 Actionable</span>
+</div>
+<div class="space-y-2">
+<!-- High Risk Item -->
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase font-semibold px-2 py-0.5 rounded-full bg-error-container text-on-tertiary-container">High Risk</span>
+<span class="font-citation-mono text-citation-mono text-secondary">Clause §14.2 • Page 19</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Uncapped consequential damages in §14.2 exposes enterprise to unlimited lost profit recovery upon default.</p>
+<div class="pt-1 flex items-center justify-between text-secondary">
+<button class="font-label-sm text-label-sm text-on-tertiary-container hover:underline flex items-center space-x-1" onclick="showCitation('Clause §14.2', 'Draft revision generated: insert standard mutual consequential waiver.')">
+<span>View Recommended Redline</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Medium Risk Item -->
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase font-semibold px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed">Medium Risk</span>
+<span class="font-citation-mono text-citation-mono text-secondary">Clause §9.4 • Page 12</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Vague termination for convenience notice window (5 calendar days) offers insufficient vendor substitution lead-time.</p>
+<div class="pt-1 flex items-center justify-between text-secondary">
+<button class="font-label-sm text-label-sm text-primary hover:underline flex items-center space-x-1" onclick="showCitation('Clause §9.4', 'Extend termination window to standard minimum 30 business days.')">
+<span>Suggest 30-Day Window</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Document Q&A Section -->
+<section class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[20px] text-primary">chat_bubble_outline</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Interactive Doc Q&amp;A</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Citations Grounded</span>
+</div>
+<!-- Suggested Quick Prompts (Moments of Delight) -->
+<div class="flex items-center space-x-2 overflow-x-auto pb-1 -mx-1 px-1">
+<button class="flex-shrink-0 font-label-sm text-label-sm bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-full hover:bg-surface-container-high transition-colors" onclick="fillQuestion('What is the governing law and arbitration clause?')">
+        🏛️ Governing Law
+      </button>
+<button class="flex-shrink-0 font-label-sm text-label-sm bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-full hover:bg-surface-container-high transition-colors" onclick="fillQuestion('Can we terminate without cause?')">
+        ✂️ Termination Terms
+      </button>
+<button class="flex-shrink-0 font-label-sm text-label-sm bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-full hover:bg-surface-container-high transition-colors" onclick="fillQuestion('What are our data confidentiality limits?')">
+        🔒 Confidentiality
+      </button>
+</div>
+<!-- Contextual Q&A Thread -->
+<div class="space-y-3 pt-1" id="chatThread">
+<!-- User Query Bubble -->
+<div class="flex justify-end">
+<div class="max-w-[85%] bg-primary text-on-primary rounded-xl rounded-tr-none px-3.5 py-2.5 shadow-sm">
+<p class="font-body-sm text-body-sm">What happens if supplier fails SLA uptime metrics 2 months consecutively?</p>
+</div>
+</div>
+<!-- AI Assistant Contextual Answer Snippet -->
+<div class="flex flex-col space-y-1.5">
+<div class="flex items-center space-x-1.5">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">LegalMate AI</span>
+<span class="font-citation-mono text-citation-mono text-secondary">• Direct Retrieval</span>
+</div>
+<div class="bg-surface-container-low rounded-xl rounded-tl-none p-3.5 space-y-2.5">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+            Under recurring monthly downtime violations, the buyer is entitled to issue immediate default notice, claim a 20% service credit, and terminate without incurring cancellation penalties.
+          </p>
+<!-- Citation Snippet Callout Block -->
+<div class="p-2.5 bg-surface-container-lowest rounded-lg space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">find_in_page</span>
+                Found in Clause 18.3, Page 22
+              </span>
+<button class="font-citation-mono text-citation-mono text-primary hover:underline" onclick="showCitation('Clause 18.3', 'Full clause text loaded into modal inspector.')">Inspect Page</button>
+</div>
+<p class="font-citation-mono text-citation-mono text-on-surface-variant italic">
+              "§18.3 Chronic Downtime: If Service Uptime dips below 99.5% for two (2) successive billing cycles, Customer may elect termination for cause effective immediately upon written notice..."
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Compact Question Input Form -->
+<form class="relative flex items-center pt-2" id="questionForm" onsubmit="handleQuestionSubmit(event)">
+<input autocomplete="off" class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md rounded-xl py-2.5 pl-3.5 pr-12 placeholder-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary shadow-sm" id="questionInput" placeholder="Ask anything about this document..." type="text"/>
+<button aria-label="Submit Question" class="absolute right-1.5 top-[11px] w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center active:scale-95 transition-transform" type="submit">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+</button>
+</form>
+</section>
+</div>
+<script>
+  function triggerToast(message) {
+    const toast = document.getElementById('actionToast');
+    const msg = document.getElementById('toastMessage');
+    if (toast && msg) {
+      msg.textContent = message;
+      toast.classList.remove('opacity-0', '-translate-y-20', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-y-20', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2600);
+    }
+  }
+
+  function fillQuestion(text) {
+    const input = document.getElementById('questionInput');
+    if (input) {
+      input.value = text;
+      input.focus();
+    }
+  }
+
+  function showCitation(clauseId, detail) {
+    triggerToast(clauseId + ': ' + detail);
+  }
+
+  function handleQuestionSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('questionInput');
+    const query = input.value.trim();
+    if (!query) return;
+
+    const chatThread = document.getElementById('chatThread');
+    
+    // Append User Question
+    const userDiv = document.createElement('div');
+    userDiv.className = 'flex justify-end';
+    userDiv.innerHTML = `
+      <div class="max-w-[85%] bg-primary text-on-primary rounded-xl rounded-tr-none px-3.5 py-2.5 shadow-sm">
+        <p class="font-body-sm text-body-sm">${query.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+      </div>
+    `;
+    chatThread.appendChild(userDiv);
+    input.value = '';
+
+    // Simulate instant legal extraction
+    setTimeout(() => {
+      const aiDiv = document.createElement('div');
+      aiDiv.className = 'flex flex-col space-y-1.5';
+      aiDiv.innerHTML = `
+        <div class="flex items-center space-x-1.5">
+          <div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center">
+            <span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+          </div>
+          <span class="font-label-sm text-label-sm font-semibold text-on-surface">LegalMate AI</span>
+          <span class="font-citation-mono text-citation-mono text-secondary">• Direct Retrieval</span>
+        </div>
+        <div class="bg-surface-container-low rounded-xl rounded-tl-none p-3.5 space-y-2.5">
+          <p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+            Analysis complete for your prompt. Relevant stipulations specify reciprocal confidentiality requirements with a 5-year post-termination survival clause.
+          </p>
+          <div class="p-2.5 bg-surface-container-lowest rounded-lg space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">find_in_page</span>
+                Found in Clause 12.1, Page 15
+              </span>
+              <button class="font-citation-mono text-citation-mono text-primary hover:underline" onclick="showCitation('Clause 12.1', 'Confidentiality bounds cited.')">Inspect Page</button>
+            </div>
+            <p class="font-citation-mono text-citation-mono text-on-surface-variant italic">
+              "§12.1 Confidential Information shall remain protected under standard non-disclosure warranties for 60 months following Agreement termination..."
+            </p>
+          </div>
+        </div>
+      `;
+      chatThread.appendChild(aiDiv);
+      triggerToast('Extracted 1 relevant statutory citation');
+    }, 450);
+  }
+
+  // Interactive Upload Tap Delight
+  const dropzone = document.getElementById('dropzone');
+  if (dropzone) {
+    dropzone.addEventListener('click', () => {
+      triggerToast('Document Browser opened • Ready for OCR');
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="bg-primary text-on-primary font-label-md"><div class="h-16 px-gutter-mobile flex items-center justify-around gap-1"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-on-surface-variant transition-colors hover:text-on-surface" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px] mb-0.5">grid_view</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-on-surface-variant transition-colors hover:text-on-surface" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-[20px] mb-0.5">auto_awesome</span><span class="font-label-sm text-label-sm">Assistant</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-on-surface-variant transition-colors hover:text-on-surface" data-path="docgen" href="#"><span class="material-symbols-outlined text-[20px] mb-0.5">note_add</span><span class="font-label-sm text-label-sm">DocGen</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full transition-colors bg-primary text-on-primary font-label-md" data-path="docanalyzer" href="#"><span class="material-symbols-outlined text-[20px] mb-0.5">document_scanner</span><span class="font-label-sm text-label-sm">Analyzer</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-on-surface-variant transition-colors hover:text-on-surface" data-path="cms" href="#"><span class="material-symbols-outlined text-[20px] mb-0.5">folder_open</span><span class="font-label-sm text-label-sm">Cases</span></a></div></nav></body></html>

@@ -1,0 +1,167 @@
+/* LegalMate Swiss Editorial Design System Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+
+:root {
+  --surface: #fbf9f9;
+  --surface-lowest: #ffffff;
+  --surface-low: #f5f3f3;
+  --surface-container: #efeded;
+  --surface-high: #e9e8e7;
+  --surface-highest: #e3e2e2;
+  --on-surface: #171717;
+  --on-surface-variant: #444748;
+  --primary: #171717;
+  --on-primary: #ffffff;
+  --secondary: #5f6161;
+  --border-hairline: #e5e5e5;
+  --alert-red: #ef4444;
+  --alert-red-bg: #fef2f2;
+  --alert-red-border: #fca5a5;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom hairline borders adhering to Swiss standards */
+.hairline-border {
+  border: 1px solid var(--border-hairline);
+}
+
+.hairline-border-t {
+  border-top: 1px solid var(--border-hairline);
+}
+
+.hairline-border-b {
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.hairline-border-r {
+  border-right: 1px solid var(--border-hairline);
+}
+
+.hairline-border-l {
+  border-left: 1px solid var(--border-hairline);
+}
+
+/* Parchment paper styling for real-time document preview */
+.parchment-sheet {
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  background-image: 
+    radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Watermark stamp */
+.watermark-stamp {
+  border: 2px dashed rgba(23, 23, 23, 0.15);
+  transform: rotate(-18deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Citation mono elements */
+.font-mono-citation {
+  font-family: var(--font-mono);
+  font-feature-settings: "zero" 1, "tnum" 1;
+}
+
+/* Scrollbar customization: subtle, clean, modern */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Active navigation link styling */
+.nav-link.active {
+  background-color: #171717 !important;
+  color: #ffffff !important;
+}
+.nav-link.active .material-symbols-outlined,
+.nav-link.active span {
+  color: #ffffff !important;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Redline Diff Styling */
+.diff-deleted {
+  background-color: #fee2e2;
+  color: #991b1b;
+  text-decoration: line-through;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+}
+
+.diff-added {
+  background-color: #dcfce7;
+  color: #166534;
+  font-weight: 500;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+}
+
+/* Focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 1.5px #171717;
+}
+
+/* Print styling */
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+  header, nav, aside, .no-print {
+    display: none !important;
+  }
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .parchment-sheet {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

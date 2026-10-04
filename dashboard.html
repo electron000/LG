@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>LEGALMATE — Executive Legal Dashboard</title>
+  
+  <link rel="icon" type="image/png" href="assets/logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#fbf9f9",
+            "on-surface": "#171717",
+            "primary": "#171717",
+            "on-primary": "#ffffff",
+            "secondary": "#5f6161",
+            "on-tertiary-container": "#ef4444"
+          },
+          fontFamily: {
+            sans: ["Inter", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/legalmate.css"/>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+
+  <!-- Desktop Sidebar -->
+  <aside class="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white border-r border-[#E5E5E5] z-40 select-none">
+    <div class="h-20 px-6 flex items-center justify-between border-b border-[#E5E5E5]">
+      <a href="dashboard.html" class="flex items-center gap-3.5 group">
+        <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-10 w-10 object-contain p-1 rounded-xl bg-white border border-[#E5E5E5] shadow-sm group-hover:scale-105 transition-transform" />
+        <div class="flex flex-col">
+          <span class="font-extrabold text-[17px] tracking-wide text-on-surface uppercase leading-tight font-sans">
+            LEGAL<span class="text-neutral-500 font-semibold">MATE</span>
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-500 font-medium">Statutory AI Suite</span>
+        </div>
+      </a>
+      <span class="flex h-2.5 w-2.5 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+    </div>
+
+    <div class="flex-1 overflow-y-auto py-5 px-3 space-y-6">
+      <div>
+        <div class="px-3 pb-2 text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          Core Workflows
+        </div>
+        <nav class="space-y-1">
+          <a href="dashboard.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold bg-[#171717] text-white transition-colors">
+            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            <span class="flex-1">Dashboard</span>
+            <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-white/20 text-white">Live</span>
+          </a>
+
+          <a href="ai-assistant.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+            <span class="flex-1">AI Assistant</span>
+            <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          </a>
+
+          <a href="document-generator.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">note_add</span>
+            <span class="flex-1">Doc Generator</span>
+            <span class="text-[10px] font-mono text-neutral-400">CRA-v4</span>
+          </a>
+
+          <a href="document-analyzer.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+            <span class="flex-1">Doc Analyzer</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-red-50 text-red-600 font-semibold">2 Flags</span>
+          </a>
+
+          <a href="case-management.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">folder_open</span>
+            <span class="flex-1">Case Docket</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 text-neutral-700 font-semibold">34</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="bg-neutral-50 p-3 rounded-xl border border-[#E5E5E5]">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-[11px] font-mono uppercase text-neutral-500 font-semibold">Omni-Search</span>
+          <kbd class="text-[10px] font-mono bg-white border border-[#E5E5E5] px-1.5 py-0.5 rounded text-neutral-600">Ctrl+K</kbd>
+        </div>
+        <button onclick="LegalMate.openOmnibox()" class="w-full text-left text-[12px] text-neutral-400 bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg hover:border-black transition-colors flex items-center justify-between">
+          <span>Search matter, clause...</span>
+          <span class="material-symbols-outlined text-[16px]">search</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Counsel Profile -->
+    <div class="p-3 border-t border-[#E5E5E5] bg-neutral-50">
+      <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E5E5E5] shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/avatar.png" alt="Sarah Vance - Senior Partner" class="w-9 h-9 rounded-full object-cover border border-[#E5E5E5] shrink-0" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[13px] font-semibold text-neutral-900 truncate">Sarah Vance, Esq.</span>
+            <span class="text-[11px] font-mono text-neutral-500 truncate">Senior Partner • Lit.</span>
+          </div>
+        </div>
+        <button onclick="LegalMate.showToast('Profile Vault: Certificate active', 'verified_user')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Container -->
+  <div class="flex-1 flex flex-col min-w-0 min-h-screen">
+    <!-- Desktop Topbar -->
+    <header class="hidden lg:flex h-16 w-full items-center justify-between px-8 bg-white/80 backdrop-blur-md border-b border-[#E5E5E5] sticky top-0 z-30">
+      <div class="flex items-center gap-3">
+        <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400">LegalMate System</span>
+        <span class="text-neutral-300">/</span>
+        <span class="text-[14px] font-semibold text-neutral-900">Dashboard</span>
+        <span class="px-2 py-0.5 rounded-full text-[11px] font-mono bg-neutral-100 text-neutral-600 border border-[#E5E5E5]">
+          PACER CourtSync: Real-Time Active
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="LegalMate.triggerPacerSync()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium text-neutral-700 bg-neutral-100 hover:bg-neutral-200 border border-[#E5E5E5] transition-colors">
+          <span class="material-symbols-outlined text-[16px]">sync</span>
+          <span>CourtSync PACER</span>
+        </button>
+        <a href="document-generator.html" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">add</span>
+          <span>New Draft</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Mobile Topbar -->
+    <header class="lg:hidden sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-[#E5E5E5]">
+      <div class="h-16 px-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-8 w-8 object-contain p-0.5 rounded-lg border border-[#E5E5E5]" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">LegalMate</span>
+            <span class="text-[16px] font-bold text-neutral-900 truncate">Dashboard</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button onclick="LegalMate.openOmnibox()" aria-label="Search" class="p-2 text-neutral-600 hover:text-black rounded-lg">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </button>
+          <img src="assets/avatar.png" alt="Sarah Vance Profile" class="w-8 h-8 rounded-full object-cover border border-[#E5E5E5] ml-1" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Workspace -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-8 pb-24 lg:pb-12">
+      <!-- Header Banner -->
+      <div class="flex flex-col space-y-3 pt-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[#ef4444] animate-pulse"></span>
+          <span class="font-mono text-[11px] uppercase tracking-widest text-neutral-500 font-semibold">Statutory Intelligence Suite</span>
+        </div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+              Intelligent Legal Precision
+            </h1>
+            <p class="text-sm sm:text-base text-neutral-600 max-w-2xl mt-1.5 leading-relaxed">
+              Autonomous research, drafting, and contract intelligence built for elite legal counsel.
+            </p>
+          </div>
+          <div class="flex items-center gap-2.5 shrink-0">
+            <a href="ai-assistant.html" class="h-11 px-5 rounded-full bg-[#171717] text-white text-[13px] font-medium flex items-center gap-2 hover:bg-neutral-800 transition-transform active:scale-95 shadow-sm">
+              <span>Launch Assistant</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+            <a href="document-generator.html" class="h-11 px-5 rounded-full bg-white border border-[#E5E5E5] text-neutral-800 text-[13px] font-medium hover:bg-neutral-50 transition-colors shadow-2xs">
+              <span>Draft Agreement</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Docket Pulse -->
+      <div class="w-full rounded-2xl bg-white border border-[#E5E5E5] p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 shrink-0">
+            <span class="material-symbols-outlined text-[20px]">gavel</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-mono text-[#ef4444] uppercase tracking-wider font-semibold">Docket Pulse</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[14px] text-neutral-900 font-semibold truncate">SEC vs. SolarTech Filing Added • Delaware Court of Chancery</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 shrink-0 self-end sm:self-auto">
+          <span class="text-[12px] font-mono text-neutral-500">14:02 EST</span>
+          <a href="case-management.html" class="text-[12px] font-medium text-neutral-900 hover:underline flex items-center gap-0.5">
+            <span>View Docket</span>
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Modules Grid -->
+      <div class="space-y-4">
+        <div class="flex items-baseline justify-between border-b border-[#E5E5E5] pb-2">
+          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900">Precision Workflows</h2>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500">4 Modules</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="ai-assistant.html" class="group flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+            <div class="flex items-center justify-between w-full">
+              <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+              </div>
+              <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+            </div>
+            <div class="mt-4">
+              <div class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">Precedent Engine</div>
+              <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">AI Counsel</h3>
+              <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                Statutory query, non-compete doctrine &amp; benchmark Supreme Court precedent research.
+              </p>
+            </div>
+          </a>
+
+          <a href="document-generator.html" class="group flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+            <div class="flex items-center justify-between w-full">
+              <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[22px]">note_add</span>
+              </div>
+              <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+            </div>
+            <div class="mt-4">
+              <div class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">Parchment Live</div>
+              <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">Doc Builder</h3>
+              <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                Automated commercial rental agreements &amp; standard covenants with real-time parchment preview.
+              </p>
+            </div>
+          </a>
+
+          <a href="document-analyzer.html" class="group flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+            <div class="flex items-center justify-between w-full">
+              <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[22px]">document_scanner</span>
+              </div>
+              <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+            </div>
+            <div class="mt-4">
+              <div class="text-[11px] font-mono uppercase text-red-500 font-semibold">Risk &amp; Redline</div>
+              <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">Risk Review</h3>
+              <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                Instant risk extraction, liability caps, uncapped consequential damage alerts &amp; redlines.
+              </p>
+            </div>
+          </a>
+
+          <a href="case-management.html" class="group flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E5E5E5] hover:border-black transition-all hover:shadow-md min-h-[190px]">
+            <div class="flex items-center justify-between w-full">
+              <div class="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900 group-hover:bg-[#171717] group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-[22px]">folder_open</span>
+              </div>
+              <span class="material-symbols-outlined text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[20px]">north_east</span>
+            </div>
+            <div class="mt-4">
+              <div class="text-[11px] font-mono uppercase text-neutral-400 font-semibold">PACER Sync</div>
+              <h3 class="text-[17px] font-bold text-neutral-900 mt-0.5">Case Docket</h3>
+              <p class="text-[13px] text-neutral-500 mt-1 line-clamp-2 leading-snug">
+                Hearing calendars, docket entries, California &amp; Federal circuit litigation portfolio.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Spotlight Graphic Card -->
+      <div class="rounded-2xl overflow-hidden bg-[#171717] text-white relative shadow-lg p-6 sm:p-8">
+        <div class="relative z-10 max-w-2xl space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-neutral-400 font-semibold">Autonomous Audit</span>
+            <span class="text-neutral-500">•</span>
+            <span class="text-[11px] font-mono text-neutral-400">v4.8 Legal-Tuned LLM</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            98.4% Clause Detection Speed Across 24 Jurisdictions
+          </h3>
+          <p class="text-sm text-neutral-300 font-normal leading-relaxed">
+            Cross-validating 24 jurisdictions with zero latency across standard commercial covenants.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <button onclick="LegalMate.showToast('All statutory benchmarks verified.', 'verified')" class="text-[13px] font-medium text-white underline underline-offset-4 hover:text-neutral-300 flex items-center gap-1.5">
+              <span>Review Statutory Benchmarks</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </button>
+            <span class="text-[12px] font-mono text-neutral-400">SHA-256 Engine Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Drafting List -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+          <div class="flex items-center gap-2">
+            <h2 class="text-lg font-bold text-neutral-900">Recent Drafting</h2>
+            <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+            <span class="text-[11px] font-mono text-neutral-500">3 Today</span>
+          </div>
+          <a href="document-generator.html" class="text-[12px] font-medium text-neutral-600 hover:text-black">
+            View All
+          </a>
+        </div>
+
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl bg-white border border-[#E5E5E5] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <h4 class="text-[15px] font-bold text-neutral-900 truncate">Master Service Agreement v2.1</h4>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-neutral-100 text-neutral-800 font-medium">Finalized</span>
+              </div>
+              <div class="flex items-center gap-3 text-[12px] text-neutral-500">
+                <span>Acme Corp</span>
+                <span>•</span>
+                <span class="font-mono">2h ago</span>
+                <span>•</span>
+                <span class="font-mono text-emerald-600">SHA-256 Verified</span>
+              </div>
+            </div>
+            <button onclick="LegalMate.showToast('Inspecting Master Service Agreement...', 'search')" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-neutral-100 hover:bg-neutral-200 transition-colors self-start sm:self-auto">
+              Inspect
+            </button>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white border border-[#E5E5E5] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <h4 class="text-[15px] font-bold text-neutral-900 truncate">Commercial Lease Agreement</h4>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase bg-amber-50 text-amber-700 font-medium border border-amber-200">Under Review</span>
+              </div>
+              <div class="flex items-center gap-3 text-[12px] text-neutral-500">
+                <span>Apex Realty Group</span>
+                <span>•</span>
+                <span class="font-mono">5h ago</span>
+                <span>•</span>
+                <span class="font-mono text-red-600 font-medium">3 Flags Identified</span>
+              </div>
+            </div>
+            <a href="document-analyzer.html" class="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-red-50 text-red-700 hover:bg-red-100 transition-colors self-start sm:self-auto">
+              Review Flags
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-[#E5E5E5] pb-safe shadow-lg">
+      <div class="h-16 px-3 flex items-center justify-around gap-1">
+        <a href="dashboard.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full bg-[#171717] text-white">
+          <span class="material-symbols-outlined text-[20px]">grid_view</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="ai-assistant.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Assistant</span>
+        </a>
+        <a href="document-generator.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">note_add</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">DocGen</span>
+        </a>
+        <a href="document-analyzer.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Analyzer</span>
+        </a>
+        <a href="case-management.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">folder_open</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Cases</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script src="js/legalmate.js"></script>
+</body>
+</html>

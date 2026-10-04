@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>LEGALMATE — Document Generator &amp; Parchment Engine</title>
+  
+  <link rel="icon" type="image/png" href="assets/logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#fbf9f9",
+            "on-surface": "#171717",
+            "primary": "#171717",
+            "on-primary": "#ffffff",
+            "secondary": "#5f6161",
+            "on-tertiary-container": "#ef4444"
+          },
+          fontFamily: {
+            sans: ["Inter", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/legalmate.css"/>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+
+  <!-- Desktop Sidebar -->
+  <aside class="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white border-r border-[#E5E5E5] z-40 select-none">
+    <div class="h-20 px-6 flex items-center justify-between border-b border-[#E5E5E5]">
+      <a href="dashboard.html" class="flex items-center gap-3.5 group">
+        <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-10 w-10 object-contain p-1 rounded-xl bg-white border border-[#E5E5E5] shadow-sm group-hover:scale-105 transition-transform" />
+        <div class="flex flex-col">
+          <span class="font-extrabold text-[17px] tracking-wide text-on-surface uppercase leading-tight font-sans">
+            LEGAL<span class="text-neutral-500 font-semibold">MATE</span>
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-500 font-medium">Statutory AI Suite</span>
+        </div>
+      </a>
+      <span class="flex h-2.5 w-2.5 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+    </div>
+
+    <div class="flex-1 overflow-y-auto py-5 px-3 space-y-6">
+      <div>
+        <div class="px-3 pb-2 text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          Core Workflows
+        </div>
+        <nav class="space-y-1">
+          <a href="dashboard.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            <span class="flex-1">Dashboard</span>
+          </a>
+
+          <a href="ai-assistant.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+            <span class="flex-1">AI Assistant</span>
+            <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          </a>
+
+          <a href="document-generator.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold bg-[#171717] text-white transition-colors">
+            <span class="material-symbols-outlined text-[20px]">note_add</span>
+            <span class="flex-1">Doc Generator</span>
+            <span class="text-[10px] font-mono text-white/70">CRA-v4</span>
+          </a>
+
+          <a href="document-analyzer.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+            <span class="flex-1">Doc Analyzer</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-red-50 text-red-600 font-semibold">2 Flags</span>
+          </a>
+
+          <a href="case-management.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[14px] font-medium text-neutral-600 hover:bg-neutral-100 hover:text-black transition-colors">
+            <span class="material-symbols-outlined text-[20px]">folder_open</span>
+            <span class="flex-1">Case Docket</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 text-neutral-700 font-semibold">34</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="bg-neutral-50 p-3 rounded-xl border border-[#E5E5E5]">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-[11px] font-mono uppercase text-neutral-500 font-semibold">Omni-Search</span>
+          <kbd class="text-[10px] font-mono bg-white border border-[#E5E5E5] px-1.5 py-0.5 rounded text-neutral-600">Ctrl+K</kbd>
+        </div>
+        <button onclick="LegalMate.openOmnibox()" class="w-full text-left text-[12px] text-neutral-400 bg-white border border-[#E5E5E5] px-2.5 py-1.5 rounded-lg hover:border-black transition-colors flex items-center justify-between">
+          <span>Search matter, clause...</span>
+          <span class="material-symbols-outlined text-[16px]">search</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Counsel Profile -->
+    <div class="p-3 border-t border-[#E5E5E5] bg-neutral-50">
+      <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E5E5E5] shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/avatar.png" alt="Sarah Vance - Senior Partner" class="w-9 h-9 rounded-full object-cover border border-[#E5E5E5] shrink-0" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[13px] font-semibold text-neutral-900 truncate">Sarah Vance, Esq.</span>
+            <span class="text-[11px] font-mono text-neutral-500 truncate">Senior Partner • Lit.</span>
+          </div>
+        </div>
+        <button onclick="LegalMate.showToast('Profile Vault: Certificate active', 'verified_user')" class="p-1.5 text-neutral-400 hover:text-black rounded-lg">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Container -->
+  <div class="flex-1 flex flex-col min-w-0 min-h-screen">
+    <!-- Desktop Topbar -->
+    <header class="hidden lg:flex h-16 w-full items-center justify-between px-8 bg-white/80 backdrop-blur-md border-b border-[#E5E5E5] sticky top-0 z-30">
+      <div class="flex items-center gap-3">
+        <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-400">LegalMate System</span>
+        <span class="text-neutral-300">/</span>
+        <span class="text-[14px] font-semibold text-neutral-900">Document Generator</span>
+        <span class="px-2 py-0.5 rounded-full text-[11px] font-mono bg-neutral-100 text-neutral-600 border border-[#E5E5E5]">
+          Standard Commercial Lease CRA-v4.2
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="window.print()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium text-neutral-700 bg-neutral-100 hover:bg-neutral-200 border border-[#E5E5E5] transition-colors">
+          <span class="material-symbols-outlined text-[16px]">print</span>
+          <span>Print Instrument</span>
+        </button>
+        <button onclick="triggerSynthesis()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-medium bg-[#171717] text-white hover:bg-neutral-800 transition-colors shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">bolt</span>
+          <span>Compile Deed</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Topbar -->
+    <header class="lg:hidden sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-[#E5E5E5]">
+      <div class="h-16 px-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="assets/logo.png" alt="LegalMate Emblem Logo" class="h-8 w-8 object-contain p-0.5 rounded-lg border border-[#E5E5E5]" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">LegalMate</span>
+            <span class="text-[16px] font-bold text-neutral-900 truncate">DocGen</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button onclick="LegalMate.openOmnibox()" aria-label="Search" class="p-2 text-neutral-600 hover:text-black rounded-lg">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </button>
+          <img src="assets/avatar.png" alt="Sarah Vance Profile" class="w-8 h-8 rounded-full object-cover border border-[#E5E5E5] ml-1" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Workspace -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 space-y-6 pb-24 lg:pb-12">
+      <!-- Progress Stepper Header -->
+      <div class="w-full flex items-center justify-between p-1 bg-white border border-[#E5E5E5] rounded-full shadow-2xs max-w-lg mx-auto">
+        <button id="step-btn-1" onclick="switchStep(1)" class="flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full bg-[#171717] text-white shadow-xs transition-all text-[12px] font-mono uppercase font-semibold">
+          <span class="material-symbols-outlined text-[16px]">edit_document</span>
+          <span>1. Fill &amp; Generate</span>
+        </button>
+        <button id="step-btn-2" onclick="switchStep(2)" class="flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full text-neutral-600 hover:text-black transition-all text-[12px] font-mono uppercase font-semibold">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>2. Review &amp; Sign</span>
+        </button>
+      </div>
+
+      <!-- Template Context Selector Banner -->
+      <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-700 font-mono text-[11px]">
+            <span>STANDARD CRA-v4.2</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ef4444] animate-pulse"></span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900">Commercial Rental Agreement</h2>
+          <p class="text-[13px] text-neutral-600">Jurisdiction: Standard Commercial Leases (NY &amp; DE Statutory Alignment)</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="LegalMate.showToast('Template Catalog: CRA-v4.2, NDA-v2, MSA-v3', 'view_list')" class="px-3 py-1.5 rounded-lg border border-[#E5E5E5] bg-neutral-50 hover:bg-neutral-100 text-[12px] font-medium text-neutral-800 transition-colors flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+            <span>Change Template</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Desktop Dual-Pane Layout: Left Form (5 cols), Right Parchment (7 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Left: Form Controls (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <!-- Segmented Navigation Tabs -->
+          <nav class="w-full">
+            <div class="grid grid-cols-3 gap-1 p-1 bg-white border border-[#E5E5E5] rounded-full">
+              <button class="tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full bg-[#171717] text-white font-semibold transition-all" id="tab-parties" onclick="switchSection('parties')" type="button">
+                Parties
+              </button>
+              <button class="tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full text-neutral-600 hover:text-black transition-all" id="tab-premises" onclick="switchSection('premises')" type="button">
+                Premises
+              </button>
+              <button class="tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full text-neutral-600 hover:text-black transition-all" id="tab-terms" onclick="switchSection('terms')" type="button">
+                Rental Terms
+              </button>
+            </div>
+          </nav>
+
+          <!-- Form Fields -->
+          <form onsubmit="event.preventDefault();" class="space-y-4">
+            <!-- Panel 1: Parties -->
+            <div class="form-panel space-y-3" id="panel-parties">
+              <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+                <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Statutory Identification</span>
+                  <span class="text-[11px] font-mono text-neutral-400">Sec. 1.01</span>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="block text-[11px] font-mono uppercase text-neutral-500" for="input-lessor">Lessor / Landlord Legal Name</label>
+                  <div class="flex items-center gap-2 bg-neutral-50 border border-[#E5E5E5] rounded-xl px-3 py-2 focus-within:bg-white focus-within:border-black transition-colors">
+                    <span class="material-symbols-outlined text-[18px] text-neutral-400">domain</span>
+                    <input id="input-lessor" type="text" value="Vanguard Real Estate Trust" oninput="updateClauseLive()" class="w-full bg-transparent text-[13px] text-neutral-900 outline-none" />
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="block text-[11px] font-mono uppercase text-neutral-500" for="input-lessee">Lessee / Tenant Entity</label>
+                  <div class="flex items-center gap-2 bg-neutral-50 border border-[#E5E5E5] rounded-xl px-3 py-2 focus-within:bg-white focus-within:border-black transition-colors">
+                    <span class="material-symbols-outlined text-[18px] text-neutral-400">corporate_fare</span>
+                    <input id="input-lessee" type="text" value="Apex Omnimedia LLP" oninput="updateClauseLive()" class="w-full bg-transparent text-[13px] text-neutral-900 outline-none" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                    <span class="block text-[10px] font-mono uppercase text-neutral-500">Authorized Signatory</span>
+                    <span class="text-[12px] font-semibold text-neutral-900 truncate block mt-0.5">Managing Trustee</span>
+                  </div>
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                    <span class="block text-[10px] font-mono uppercase text-neutral-500">Notice Dispatch</span>
+                    <span class="text-[12px] font-semibold text-neutral-900 truncate block mt-0.5">Certified Post / Email</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Premises -->
+            <div class="form-panel hidden space-y-3" id="panel-premises">
+              <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+                <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Demised Parcel Description</span>
+                  <span class="text-[11px] font-mono text-neutral-400">Sec. 1.02</span>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="block text-[11px] font-mono uppercase text-neutral-500" for="input-premises">Demised Premises Address</label>
+                  <div class="flex items-start gap-2 bg-neutral-50 border border-[#E5E5E5] rounded-xl px-3 py-2 focus-within:bg-white focus-within:border-black transition-colors">
+                    <span class="material-symbols-outlined text-[18px] text-neutral-400 mt-0.5">location_on</span>
+                    <textarea id="input-premises" rows="2" oninput="updateClauseLive()" class="w-full bg-transparent text-[13px] text-neutral-900 outline-none resize-none">Suite 400, 750 Lexington Avenue, New York, NY 10022</textarea>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                    <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-sqft">Usable Area (Sq. Ft)</label>
+                    <input id="input-sqft" type="text" value="4,850 RSF" oninput="updateClauseLive()" class="w-full bg-transparent font-mono text-[12px] font-semibold text-neutral-900 outline-none" />
+                  </div>
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                    <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-zoning">Permitted Use</label>
+                    <input id="input-zoning" type="text" value="Class-A Commercial" class="w-full bg-transparent text-[12px] font-semibold text-neutral-900 outline-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Rental Terms -->
+            <div class="form-panel hidden space-y-3" id="panel-terms">
+              <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+                <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-2">
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Financial Consideration</span>
+                  <span class="text-[11px] font-mono text-neutral-400">Sec. 2.01</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                    <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-rent">Monthly Base Rent</label>
+                    <div class="flex items-center gap-1 font-mono text-[13px] font-bold text-neutral-900">
+                      <span>$</span>
+                      <input id="input-rent" type="text" value="14,250.00" oninput="updateClauseLive()" class="w-full bg-transparent outline-none" />
+                    </div>
+                  </div>
+                  <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5]">
+                    <label class="block text-[10px] font-mono uppercase text-neutral-500 mb-0.5" for="input-deposit">Security Deposit</label>
+                    <div class="flex items-center gap-1 font-mono text-[13px] font-bold text-neutral-900">
+                      <span>$</span>
+                      <input id="input-deposit" type="text" value="42,750.00" oninput="updateClauseLive()" class="w-full bg-transparent outline-none" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-neutral-50 p-2.5 rounded-xl border border-[#E5E5E5] flex items-center justify-between">
+                  <div>
+                    <span class="block text-[10px] font-mono uppercase text-neutral-500">Initial Leasehold Tenure</span>
+                    <span class="text-[13px] font-semibold text-neutral-900">36 Full Calendar Months</span>
+                  </div>
+                  <span class="px-2 py-0.5 bg-neutral-200 rounded text-[11px] font-mono text-neutral-700">Fixed Index</span>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Compliance Validation Card -->
+          <div class="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-xs flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">rule</span>
+              </div>
+              <div>
+                <p class="text-[13px] font-semibold text-neutral-900">Compliance Validation</p>
+                <p class="text-[11px] font-mono text-neutral-500">3/3 Mandatory Elements Present</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-mono text-[11px] font-semibold border border-emerald-200">
+              100% Ready
+            </span>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <button id="generate-btn" onclick="triggerSynthesis()" class="w-full py-3.5 px-6 rounded-full bg-[#171717] text-white flex items-center justify-center gap-2 hover:bg-neutral-800 active:scale-[0.99] transition-all shadow-md">
+              <span class="text-[13px] font-mono uppercase tracking-wider font-semibold">Generate Draft</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Real-Time Instrument Parchment (7 cols) -->
+        <div class="lg:col-span-7 space-y-3">
+          <div class="flex items-center justify-between px-1">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-neutral-500">visibility</span>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">Real-Time Instrument Preview</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 font-mono text-[10px] uppercase">
+              Page 1 of 12
+            </span>
+          </div>
+
+          <!-- Parchment Paper Surface -->
+          <div class="relative bg-white rounded-2xl p-6 sm:p-8 border border-[#E5E5E5] shadow-md overflow-hidden min-h-[460px] parchment-sheet">
+            <!-- Watermark Stamp Overlay -->
+            <div class="watermark-stamp absolute right-4 top-8 w-36 h-36 rounded-full flex flex-col items-center justify-center opacity-10 text-neutral-900 border-2 border-dashed border-neutral-900">
+              <span class="material-symbols-outlined text-[36px]">verified_user</span>
+              <span class="font-mono text-[9px] font-bold tracking-widest uppercase">LEGALMATE</span>
+              <span class="font-mono text-[7px] tracking-wider uppercase">VERIFIED DRAFT</span>
+            </div>
+
+            <!-- Header -->
+            <div class="text-center space-y-1 mb-6 pb-4 border-b border-neutral-200">
+              <div class="font-mono text-[10px] tracking-widest uppercase text-neutral-400">Contract Instrument No. CRA-2025-0891</div>
+              <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900">Standard Commercial Lease</h3>
+              <div class="flex items-center justify-center gap-2 text-neutral-500 font-mono text-[11px]">
+                <span>STATE OF NEW YORK</span>
+                <span>•</span>
+                <span>COUNTY OF NEW YORK</span>
+              </div>
+            </div>
+
+            <!-- Clauses -->
+            <div class="space-y-4 text-neutral-800 text-[13px] leading-relaxed">
+              <p class="text-justify leading-relaxed">
+                THIS INDENTURE OF LEASE is made and entered into this <span class="font-mono font-medium underline underline-offset-4">04th</span> day of <span class="font-mono font-medium underline underline-offset-4">October</span>, 2026, by and between
+                <span class="font-semibold text-neutral-900 bg-neutral-100 px-1.5 py-0.5 rounded transition-colors" id="preview-lessor">Vanguard Real Estate Trust</span> (hereinafter denominated the “Lessor”), and
+                <span class="font-semibold text-neutral-900 bg-neutral-100 px-1.5 py-0.5 rounded transition-colors" id="preview-lessee">Apex Omnimedia LLP</span> (hereinafter denominated the “Lessee”).
+              </p>
+
+              <!-- Clause 1 -->
+              <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[11px] font-semibold uppercase text-neutral-500">Clause 1. GRANT OF TENANCY</span>
+                  <span class="material-symbols-outlined text-[14px] text-neutral-400">lock</span>
+                </div>
+                <p class="text-justify leading-relaxed text-neutral-700">
+                  The Lessor hereby demises unto the Lessee all that piece and parcel of commercial property situated at
+                  <span class="font-mono text-neutral-900 font-medium bg-neutral-200 px-1.5 py-0.5 rounded" id="preview-premises">Suite 400, 750 Lexington Avenue, New York, NY 10022</span>,
+                  measuring approximately <span class="font-mono font-semibold text-neutral-900" id="preview-sqft">4,850 RSF</span>, together with ingress and egress easements appurtenant thereto.
+                </p>
+              </div>
+
+              <!-- Clause 2 -->
+              <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[11px] font-semibold uppercase text-neutral-500">Clause 2. RENT &amp; INDEMNITY BOND</span>
+                  <span class="material-symbols-outlined text-[14px] text-neutral-400">payments</span>
+                </div>
+                <p class="text-justify leading-relaxed text-neutral-700">
+                  Yielding and paying therefor a continuous Monthly Base Consideration of <span class="font-mono font-bold text-neutral-900">$<span id="preview-rent">14,250.00</span></span>, payable on or before the first calendar day of each successive monthly cycle, together with an earnest Security Deposit amounting to <span class="font-mono font-bold text-neutral-900">$<span id="preview-deposit">42,750.00</span></span> pledged upon full execution.
+                </p>
+              </div>
+
+              <!-- Signature Mockup -->
+              <div class="pt-6 grid grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <div class="h-0.5 bg-neutral-300 w-full"></div>
+                  <span class="block font-mono text-[10px] uppercase text-neutral-500">Authorized: Lessor</span>
+                  <span class="text-[12px] font-mono text-neutral-400 italic">Signed via LegalMate E-Vault</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="h-0.5 bg-neutral-300 w-full"></div>
+                  <span class="block font-mono text-[10px] uppercase text-neutral-500">Authorized: Lessee</span>
+                  <span class="text-[12px] font-mono text-neutral-400 italic">Pending Execution</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-[#E5E5E5] pb-safe shadow-lg">
+      <div class="h-16 px-3 flex items-center justify-around gap-1">
+        <a href="dashboard.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">grid_view</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="ai-assistant.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Assistant</span>
+        </a>
+        <a href="document-generator.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full bg-[#171717] text-white">
+          <span class="material-symbols-outlined text-[20px]">note_add</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">DocGen</span>
+        </a>
+        <a href="document-analyzer.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">document_scanner</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Analyzer</span>
+        </a>
+        <a href="case-management.html" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-2.5 rounded-full text-neutral-500 hover:text-black">
+          <span class="material-symbols-outlined text-[20px]">folder_open</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider font-semibold mt-0.5">Cases</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script src="js/legalmate.js"></script>
+  <script>
+    function updateClauseLive() {
+      const lessor = document.getElementById('input-lessor').value || '________________';
+      const lessee = document.getElementById('input-lessee').value || '________________';
+      const premises = document.getElementById('input-premises').value || '________________';
+      const sqft = document.getElementById('input-sqft') ? document.getElementById('input-sqft').value : '4,850 RSF';
+      const rent = document.getElementById('input-rent').value || '0.00';
+      const deposit = document.getElementById('input-deposit').value || '0.00';
+
+      document.getElementById('preview-lessor').innerText = lessor;
+      document.getElementById('preview-lessee').innerText = lessee;
+      document.getElementById('preview-premises').innerText = premises;
+      if (document.getElementById('preview-sqft')) document.getElementById('preview-sqft').innerText = sqft;
+      document.getElementById('preview-rent').innerText = rent;
+      document.getElementById('preview-deposit').innerText = deposit;
+    }
+
+    function switchSection(sec) {
+      ['parties', 'premises', 'terms'].forEach(k => {
+        const panel = document.getElementById(`panel-${k}`);
+        const tab = document.getElementById(`tab-${k}`);
+        if (k === sec) {
+          panel.classList.remove('hidden');
+          tab.className = 'tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full bg-[#171717] text-white font-semibold transition-all';
+        } else {
+          panel.classList.add('hidden');
+          tab.className = 'tab-btn py-1.5 text-center font-mono text-[11px] uppercase tracking-wider rounded-full text-neutral-600 hover:text-black transition-all';
+        }
+      });
+    }
+
+    function switchStep(step) {
+      const btn1 = document.getElementById('step-btn-1');
+      const btn2 = document.getElementById('step-btn-2');
+      if (step === 1) {
+        btn1.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full bg-[#171717] text-white shadow-xs transition-all text-[12px] font-mono uppercase font-semibold';
+        btn2.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full text-neutral-600 hover:text-black transition-all text-[12px] font-mono uppercase font-semibold';
+      } else {
+        btn2.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full bg-[#171717] text-white shadow-xs transition-all text-[12px] font-mono uppercase font-semibold';
+        btn1.className = 'flex items-center justify-center gap-2 flex-1 py-2 px-4 rounded-full text-neutral-600 hover:text-black transition-all text-[12px] font-mono uppercase font-semibold';
+        LegalMate.showToast('Step 2: Review and signature execution ready', 'verified');
+      }
+    }
+
+    function triggerSynthesis() {
+      const btn = document.getElementById('generate-btn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> <span class="text-[13px] font-mono uppercase tracking-wider font-semibold">Synthesizing Instrument...</span>`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">check_circle</span> <span class="text-[13px] font-mono uppercase tracking-wider font-semibold">Draft Generated &amp; Sealed</span>`;
+        btn.classList.remove('bg-[#171717]');
+        btn.classList.add('bg-emerald-600');
+        LegalMate.showToast('Commercial Rental Agreement CRA-2025-0891 Synthesized!', 'verified');
+        switchStep(2);
+
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.disabled = false;
+          btn.classList.add('bg-[#171717]');
+          btn.classList.remove('bg-emerald-600');
+        }, 3000);
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
